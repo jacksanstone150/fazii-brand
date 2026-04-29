@@ -3,279 +3,431 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAZII BRAND</title>
+<title>FAZII FASHION BLOG — Style, Suits & More</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Arial,sans-serif;background:#0d0d0d;color:#fff;}
-nav{background:#0d0d0d;padding:16px 30px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222;position:sticky;top:0;z-index:200;}
-.logo{color:#c9a84c;font-size:20px;font-weight:700;letter-spacing:3px;}
-.cart-btn{background:#c9a84c;color:#0d0d0d;border:none;padding:9px 18px;border-radius:4px;cursor:pointer;font-weight:700;font-size:13px;}
-.cart-count{background:#fff;color:#0d0d0d;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-left:4px;}
+body{font-family:Georgia,serif;background:#f5f5f0;color:#1a1a1a;}
+
+/* TOP BAR */
+.topbar{background:#1a1a1a;padding:8px 0;text-align:center;overflow:hidden;white-space:nowrap;}
+.topbar-inner{display:inline-block;animation:scroll 25s linear infinite;}
+.topbar-inner span{color:#c9a84c;font-size:12px;letter-spacing:2px;margin:0 30px;font-family:Arial,sans-serif;}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* NAV */
+nav{background:#fff;border-bottom:3px solid #c9a84c;position:sticky;top:0;z-index:100;}
+.nav-top{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;}
+.nav-logo{text-align:center;}
+.nav-logo h1{font-size:32px;font-weight:700;letter-spacing:4px;color:#1a1a1a;}
+.nav-logo p{font-size:11px;color:#888;letter-spacing:3px;text-transform:uppercase;}
+.nav-date{font-size:12px;color:#888;font-family:Arial,sans-serif;}
+.nav-social a{color:#1a1a1a;margin-left:12px;font-size:13px;text-decoration:none;font-family:Arial,sans-serif;}
+.nav-social a:hover{color:#c9a84c;}
+.nav-links{background:#1a1a1a;padding:0 40px;display:flex;gap:0;}
+.nav-links a{color:#ccc;text-decoration:none;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:10px 16px;font-family:Arial,sans-serif;display:block;}
+.nav-links a:hover{background:#c9a84c;color:#1a1a1a;}
+
+/* HERO / FEATURED */
+.featured{display:grid;grid-template-columns:2fr 1fr;gap:0;max-height:500px;overflow:hidden;}
+.featured-main{position:relative;overflow:hidden;}
+.featured-main img{width:100%;height:500px;object-fit:cover;}
+.featured-main-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.85));padding:30px;}
+.featured-tag{background:#c9a84c;color:#1a1a1a;font-size:10px;font-weight:700;letter-spacing:2px;padding:3px 10px;text-transform:uppercase;font-family:Arial,sans-serif;display:inline-block;margin-bottom:10px;}
+.featured-main-title{color:#fff;font-size:26px;line-height:1.3;margin-bottom:8px;}
+.featured-main-meta{color:#aaa;font-size:12px;font-family:Arial,sans-serif;}
+.featured-side{display:flex;flex-direction:column;}
+.featured-side-item{position:relative;overflow:hidden;flex:1;}
+.featured-side-item img{width:100%;height:250px;object-fit:cover;}
+.featured-side-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.8));padding:16px;}
+.featured-side-title{color:#fff;font-size:15px;line-height:1.3;}
+.featured-side-tag{background:#c9a84c;color:#1a1a1a;font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 8px;text-transform:uppercase;font-family:Arial,sans-serif;display:inline-block;margin-bottom:6px;}
+
+/* BREAKING NEWS BAR */
+.breaking{background:#c9a84c;padding:8px 40px;display:flex;align-items:center;gap:16px;}
+.breaking-label{background:#1a1a1a;color:#c9a84c;font-size:10px;font-weight:700;letter-spacing:2px;padding:4px 10px;white-space:nowrap;font-family:Arial,sans-serif;}
+.breaking-text{font-size:13px;color:#1a1a1a;font-family:Arial,sans-serif;font-weight:700;}
+
+/* MAIN CONTENT */
+.container{max-width:1200px;margin:0 auto;padding:40px 20px;}
+.content-grid{display:grid;grid-template-columns:2fr 1fr;gap:40px;}
+
+/* ARTICLES */
+.section-header{border-bottom:3px solid #1a1a1a;margin-bottom:24px;display:flex;align-items:center;gap:12px;padding-bottom:8px;}
+.section-title{font-size:18px;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+.section-title span{color:#c9a84c;}
+.articles-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px;}
+.article-card{cursor:pointer;}
+.article-card img{width:100%;height:200px;object-fit:cover;margin-bottom:12px;}
+.article-card:hover img{opacity:0.9;}
+.article-cat{font-size:10px;font-weight:700;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;font-family:Arial,sans-serif;margin-bottom:6px;}
+.article-title{font-size:17px;line-height:1.4;margin-bottom:8px;color:#1a1a1a;}
+.article-title:hover{color:#c9a84c;}
+.article-excerpt{font-size:13px;color:#666;line-height:1.6;font-family:Arial,sans-serif;margin-bottom:8px;}
+.article-meta{font-size:11px;color:#999;font-family:Arial,sans-serif;}
+.article-meta span{color:#c9a84c;}
+
+/* FEATURED LIST */
+.article-list-item{display:flex;gap:14px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #e5e5e5;}
+.article-list-item img{width:90px;height:70px;object-fit:cover;flex-shrink:0;}
+.article-list-title{font-size:14px;line-height:1.4;margin-bottom:4px;}
+.article-list-meta{font-size:11px;color:#999;font-family:Arial,sans-serif;}
+
+/* SIDEBAR */
+.sidebar{}
+.sidebar-widget{background:#fff;padding:20px;margin-bottom:24px;border-top:3px solid #c9a84c;}
+.widget-title{font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #eee;}
+.popular-item{display:flex;gap:10px;margin-bottom:14px;align-items:flex-start;}
+.popular-num{font-size:24px;font-weight:700;color:#e5e5e5;line-height:1;min-width:30px;}
+.popular-title{font-size:13px;line-height:1.4;color:#1a1a1a;}
+.popular-meta{font-size:11px;color:#999;font-family:Arial,sans-serif;margin-top:2px;}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:8px;}
+.tag{background:#f5f5f0;border:1px solid #ddd;padding:5px 12px;font-size:11px;font-family:Arial,sans-serif;cursor:pointer;letter-spacing:1px;}
+.tag:hover{background:#c9a84c;border-color:#c9a84c;color:#1a1a1a;}
+.newsletter input{width:100%;padding:10px;border:1px solid #ddd;font-size:13px;margin-bottom:8px;font-family:Arial,sans-serif;}
+.newsletter button{width:100%;padding:10px;background:#1a1a1a;color:#fff;border:none;font-size:12px;letter-spacing:2px;cursor:pointer;font-family:Arial,sans-serif;text-transform:uppercase;}
+.newsletter button:hover{background:#c9a84c;color:#1a1a1a;}
+
+/* SHOP SECTION */
+.shop-section{background:#1a1a1a;padding:40px;margin:40px 0;}
+.shop-title{color:#fff;font-size:22px;font-weight:700;letter-spacing:3px;text-align:center;margin-bottom:6px;}
+.shop-sub{color:#888;font-size:13px;text-align:center;font-family:Arial,sans-serif;margin-bottom:30px;}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
+.shop-card{background:#222;border:1px solid #333;cursor:pointer;transition:border-color 0.2s;}
+.shop-card:hover{border-color:#c9a84c;}
+.shop-card img{width:100%;height:180px;object-fit:cover;}
+.shop-card-body{padding:12px;}
+.shop-card-name{font-size:13px;color:#fff;margin-bottom:4px;}
+.shop-card-price{font-size:14px;color:#c9a84c;font-weight:700;margin-bottom:10px;}
+.shop-card-btn{width:100%;padding:8px;background:#c9a84c;color:#1a1a1a;border:none;font-size:11px;font-weight:700;cursor:pointer;letter-spacing:1px;text-transform:uppercase;}
+.shop-card-btn:hover{background:#fff;}
+
+/* ARTICLE DETAIL PAGE */
+.article-detail{max-width:800px;margin:0 auto;padding:40px 20px;}
+.detail-back{font-size:13px;color:#c9a84c;cursor:pointer;font-family:Arial,sans-serif;margin-bottom:24px;display:inline-block;}
+.detail-back:hover{text-decoration:underline;}
+.detail-cat{font-size:11px;font-weight:700;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;font-family:Arial,sans-serif;margin-bottom:10px;}
+.detail-title{font-size:34px;line-height:1.3;margin-bottom:14px;}
+.detail-meta{font-size:13px;color:#999;font-family:Arial,sans-serif;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #eee;}
+.detail-img{width:100%;height:400px;object-fit:cover;margin-bottom:24px;}
+.detail-body p{font-size:16px;line-height:1.8;color:#333;margin-bottom:16px;}
+.detail-body h3{font-size:20px;margin:24px 0 12px;}
+.detail-body blockquote{border-left:4px solid #c9a84c;padding:12px 20px;margin:20px 0;background:#f9f9f5;font-style:italic;font-size:17px;}
+
+/* FOOTER */
+footer{background:#1a1a1a;padding:40px;margin-top:40px;}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;margin-bottom:30px;}
+.footer-logo{color:#c9a84c;font-size:22px;font-weight:700;letter-spacing:3px;margin-bottom:8px;}
+.footer-desc{color:#666;font-size:13px;line-height:1.6;font-family:Arial,sans-serif;}
+.footer-heading{color:#fff;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;}
+.footer-links a{display:block;color:#666;text-decoration:none;font-size:13px;font-family:Arial,sans-serif;margin-bottom:6px;}
+.footer-links a:hover{color:#c9a84c;}
+.footer-bottom{border-top:1px solid #2a2a2a;padding-top:20px;text-align:center;color:#444;font-size:12px;font-family:Arial,sans-serif;}
 
 /* PAGES */
 .page{display:none;}
 .page.active{display:block;}
 
-/* HOME */
-.hero{padding:60px 30px;text-align:center;border-bottom:1px solid #1a1a1a;}
-.hero h1{font-size:36px;color:#fff;margin-bottom:8px;}
-.hero h1 span{color:#c9a84c;}
-.hero p{color:#777;font-size:14px;margin-bottom:24px;}
-.btn-gold{background:#c9a84c;color:#0d0d0d;padding:12px 32px;border:none;border-radius:3px;font-size:14px;font-weight:700;cursor:pointer;}
-
-.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:40px 30px;}
-.pcard{background:#151515;border:1px solid #222;border-radius:8px;overflow:hidden;cursor:pointer;transition:all 0.2s;}
-.pcard:hover{border-color:#c9a84c;transform:translateY(-4px);}
-.pcard img{width:100%;height:200px;object-fit:cover;}
-.pcard-body{padding:14px;}
-.pcard-name{font-size:14px;font-weight:700;margin-bottom:4px;}
-.pcard-fabric{font-size:11px;color:#555;margin-bottom:8px;}
-.pcard-price{font-size:16px;color:#c9a84c;font-weight:700;}
-.pcard-footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px;}
-.view-btn{background:transparent;color:#c9a84c;border:1px solid #c9a84c;padding:6px 14px;border-radius:3px;font-size:12px;cursor:pointer;}
-.view-btn:hover{background:#c9a84c;color:#0d0d0d;}
-
-/* DETAIL PAGE */
-.detail{padding:30px;}
-.back-btn{background:transparent;color:#c9a84c;border:none;font-size:13px;cursor:pointer;margin-bottom:24px;display:flex;align-items:center;gap:6px;}
-.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:900px;}
-.detail-img{width:100%;border-radius:8px;height:400px;object-fit:cover;}
-.detail-tag{color:#c9a84c;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
-.detail-name{font-size:28px;font-weight:700;margin-bottom:8px;}
-.detail-price{font-size:26px;color:#c9a84c;font-weight:700;margin-bottom:16px;}
-.detail-desc{color:#888;font-size:13px;line-height:1.7;margin-bottom:20px;}
-.detail-features{margin-bottom:24px;}
-.detail-features li{color:#aaa;font-size:13px;margin-bottom:6px;list-style:none;padding-left:16px;position:relative;}
-.detail-features li::before{content:'✓';color:#c9a84c;position:absolute;left:0;}
-.size-label{font-size:12px;color:#777;margin-bottom:8px;}
-.sizes{display:flex;gap:8px;margin-bottom:20px;}
-.size-btn{width:38px;height:38px;border:1px solid #333;background:transparent;color:#aaa;border-radius:4px;cursor:pointer;font-size:13px;}
-.size-btn.active,.size-btn:hover{border-color:#c9a84c;color:#c9a84c;}
-.add-cart-btn{width:100%;padding:14px;background:#c9a84c;color:#0d0d0d;border:none;border-radius:4px;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:10px;}
-.add-cart-btn:hover{background:#e0bc5a;}
-.wa-order-btn{width:100%;padding:12px;background:#25D366;color:#fff;border:none;border-radius:4px;font-size:14px;font-weight:700;cursor:pointer;}
-
-/* CART PAGE */
-.cart-page{padding:30px;max-width:700px;margin:0 auto;}
-.cart-page h2{font-size:22px;margin-bottom:24px;color:#c9a84c;}
-.cart-item{display:flex;gap:16px;background:#151515;border:1px solid #222;border-radius:8px;padding:14px;margin-bottom:12px;align-items:center;}
-.cart-item img{width:70px;height:70px;object-fit:cover;border-radius:4px;}
-.cart-item-info{flex:1;}
-.cart-item-name{font-size:14px;font-weight:700;margin-bottom:3px;}
-.cart-item-size{font-size:12px;color:#666;margin-bottom:6px;}
-.cart-item-price{font-size:15px;color:#c9a84c;font-weight:700;}
-.remove-btn{background:transparent;color:#555;border:none;cursor:pointer;font-size:18px;}
-.remove-btn:hover{color:#e24b4a;}
-.cart-total{background:#151515;border:1px solid #c9a84c;border-radius:8px;padding:20px;margin-top:20px;}
-.total-row{display:flex;justify-content:space-between;font-size:14px;color:#aaa;margin-bottom:8px;}
-.total-final{display:flex;justify-content:space-between;font-size:18px;font-weight:700;color:#c9a84c;margin-top:12px;padding-top:12px;border-top:1px solid #333;}
-.checkout-btn{width:100%;padding:14px;background:#c9a84c;color:#0d0d0d;border:none;border-radius:4px;font-size:15px;font-weight:700;cursor:pointer;margin-top:16px;}
-.empty-cart{text-align:center;padding:60px 20px;color:#555;}
-.empty-cart p{font-size:16px;margin-bottom:16px;}
-
-/* TOAST */
-.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#c9a84c;color:#0d0d0d;padding:12px 24px;border-radius:4px;font-weight:700;font-size:13px;display:none;z-index:999;}
-
 /* WA FLOAT */
-.wa-float{position:fixed;bottom:24px;right:24px;background:#25D366;color:#fff;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;text-decoration:none;z-index:998;}
+.wa-float{position:fixed;bottom:24px;right:24px;background:#25D366;color:#fff;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;text-decoration:none;z-index:998;box-shadow:0 4px 12px rgba(37,211,102,0.4);}
 
-@media(max-width:600px){
-  .detail-grid{grid-template-columns:1fr;}
-  .detail-img{height:260px;}
+@media(max-width:768px){
+  .featured{grid-template-columns:1fr;}
+  .featured-side{display:none;}
+  .content-grid{grid-template-columns:1fr;}
+  .articles-grid{grid-template-columns:1fr;}
+  .nav-top{flex-direction:column;gap:8px;padding:12px 20px;}
+  .nav-links{padding:0 20px;flex-wrap:wrap;}
+  .breaking{padding:8px 20px;}
+  .container{padding:20px;}
+  .shop-section{padding:24px 16px;}
 }
 </style>
 </head>
 <body>
 
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>FAZII FASHION BLOG</span><span>Latest Suit Trends 2025</span><span>Custom Stitching Available</span><span>Faisalabad's #1 Fashion Blog</span><span>New Collection Every Week</span><span>WhatsApp Orders Welcome</span>
+    <span>FAZII FASHION BLOG</span><span>Latest Suit Trends 2025</span><span>Custom Stitching Available</span><span>Faisalabad's #1 Fashion Blog</span><span>New Collection Every Week</span><span>WhatsApp Orders Welcome</span>
+  </div>
+</div>
+
+<!-- NAV -->
 <nav>
-  <div class="logo">FAZII BRAND</div>
-  <button class="cart-btn" onclick="showPage('cart')">
-    Cart <span class="cart-count" id="cartCount">0</span>
-  </button>
+  <div class="nav-top">
+    <div class="nav-date" style="font-family:Arial,sans-serif;">Wednesday, April 29, 2026</div>
+    <div class="nav-logo">
+      <h1>FAZII BRAND</h1>
+      <p>Fashion News & Style Guide — Faisalabad</p>
+    </div>
+    <div class="nav-social">
+      <a href="#">FB</a><a href="#">IG</a><a href="#">YT</a><a href="#">WA</a>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#" onclick="showPage('home')">Home</a>
+    <a href="#" onclick="showPage('home')">Fashion</a>
+    <a href="#" onclick="showPage('home')">Suits</a>
+    <a href="#" onclick="showPage('home')">Trends</a>
+    <a href="#" onclick="showPage('home')">Style Tips</a>
+    <a href="#" onclick="showPage('home')">Reviews</a>
+    <a href="#" onclick="showPage('home')">Shop</a>
+    <a href="#" onclick="showPage('home')">About</a>
+  </div>
 </nav>
 
 <!-- HOME PAGE -->
 <div id="homePage" class="page active">
-  <div class="hero">
-    <h1>Style Jo Bolti Hai<br><span>Aapki Shakhsiyat</span></h1>
-    <p>Har suit ek kahani — sirf aapke liye tailored • Faisalabad</p>
-    <button class="btn-gold" onclick="document.getElementById('productsSection').scrollIntoView({behavior:'smooth'})">Collection Dekhein</button>
-  </div>
-  <div id="productsSection" class="products-grid" id="productsGrid"></div>
-</div>
 
-<!-- DETAIL PAGE -->
-<div id="detailPage" class="page">
-  <div class="detail">
-    <button class="back-btn" onclick="showPage('home')">← Wapas Jao</button>
-    <div class="detail-grid">
-      <div><img id="detailImg" src="" alt=""></div>
-      <div>
-        <div class="detail-tag">FAZII BRAND</div>
-        <div class="detail-name" id="detailName"></div>
-        <div class="detail-price" id="detailPrice"></div>
-        <div class="detail-desc" id="detailDesc"></div>
-        <ul class="detail-features" id="detailFeatures"></ul>
-        <div class="size-label">Size chunein:</div>
-        <div class="sizes">
-          <button class="size-btn active" onclick="selectSize(this)">S</button>
-          <button class="size-btn" onclick="selectSize(this)">M</button>
-          <button class="size-btn" onclick="selectSize(this)">L</button>
-          <button class="size-btn" onclick="selectSize(this)">XL</button>
-          <button class="size-btn" onclick="selectSize(this)">XXL</button>
+  <!-- FEATURED -->
+  <div class="featured">
+    <div class="featured-main" onclick="showArticle(0)">
+      <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&h=500&fit=crop" alt="Featured">
+      <div class="featured-main-overlay">
+        <span class="featured-tag">Featured</span>
+        <h2 class="featured-main-title">The Art of the Perfect Suit: Why Pakistani Men Are Redefining Menswear in 2025</h2>
+        <div class="featured-main-meta" style="font-family:Arial,sans-serif;">By Fazii Brand Team &nbsp;|&nbsp; April 29, 2026</div>
+      </div>
+    </div>
+    <div class="featured-side">
+      <div class="featured-side-item" onclick="showArticle(1)">
+        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4b1c5a?w=400&h=250&fit=crop" alt="">
+        <div class="featured-side-overlay">
+          <span class="featured-side-tag">Sherwani</span>
+          <div class="featured-side-title">Top 5 Sherwani Styles for Wedding Season 2025</div>
         </div>
-        <button class="add-cart-btn" onclick="addToCart()">+ Add to Cart</button>
-        <button class="wa-order-btn" onclick="waOrder()">WhatsApp pe Order Karein</button>
+      </div>
+      <div class="featured-side-item" onclick="showArticle(2)">
+        <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=400&h=250&fit=crop" alt="">
+        <div class="featured-side-overlay">
+          <span class="featured-side-tag">Trends</span>
+          <div class="featured-side-title">Shalwar Kameez is Making a Global Comeback</div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- CART PAGE -->
-<div id="cartPage" class="page">
-  <div class="cart-page">
-    <button class="back-btn" onclick="showPage('home')">← Shopping Jaari Rakhein</button>
-    <h2>Aapki Cart</h2>
-    <div id="cartItems"></div>
-    <div id="cartSummary"></div>
+  <!-- BREAKING -->
+  <div class="breaking">
+    <div class="breaking-label">LATEST</div>
+    <div class="breaking-text">New Collection Dropped: Winter Karandi Suits Now Available — Rs. 1,800 Only!</div>
   </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+    <div class="content-grid">
+
+      <!-- ARTICLES -->
+      <div>
+        <div class="section-header">
+          <div class="section-title">Latest <span>Stories</span></div>
+        </div>
+        <div class="articles-grid">
+          <div class="article-card" onclick="showArticle(0)">
+            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=400&h=200&fit=crop" alt="">
+            <div class="article-cat">Fashion</div>
+            <div class="article-title">The Art of the Perfect Suit: Redefining Pakistani Menswear</div>
+            <div class="article-excerpt">From Faisalabad's streets to global runways — how local tailors are setting new standards in men's fashion.</div>
+            <div class="article-meta">By <span>Fazii Team</span> &nbsp;|&nbsp; April 29, 2026</div>
+          </div>
+          <div class="article-card" onclick="showArticle(1)">
+            <img src="https://images.unsplash.com/photo-1594938298603-c8148c4b1c5a?w=400&h=200&fit=crop" alt="">
+            <div class="article-cat">Sherwani</div>
+            <div class="article-title">Top 5 Sherwani Styles for Wedding Season 2025</div>
+            <div class="article-excerpt">Getting married or attending a wedding? Here are the hottest sherwani trends you need to know about.</div>
+            <div class="article-meta">By <span>Fazii Team</span> &nbsp;|&nbsp; April 27, 2026</div>
+          </div>
+          <div class="article-card" onclick="showArticle(2)">
+            <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=400&h=200&fit=crop" alt="">
+            <div class="article-cat">Trends</div>
+            <div class="article-title">Shalwar Kameez is Making a Global Comeback in 2025</div>
+            <div class="article-excerpt">International designers are now taking inspiration from South Asian traditional wear. Here's what that means for you.</div>
+            <div class="article-meta">By <span>Fazii Team</span> &nbsp;|&nbsp; April 25, 2026</div>
+          </div>
+          <div class="article-card" onclick="showArticle(3)">
+            <img src="https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=400&h=200&fit=crop" alt="">
+            <div class="article-cat">Style Tips</div>
+            <div class="article-title">How to Choose the Right Fabric for Every Occasion</div>
+            <div class="article-excerpt">Lawn, karandi, silk or wool? Our complete guide to picking the perfect fabric for any event or season.</div>
+            <div class="article-meta">By <span>Fazii Team</span> &nbsp;|&nbsp; April 23, 2026</div>
+          </div>
+          <div class="article-card" onclick="showArticle(4)">
+            <img src="https://images.unsplash.com/photo-1520367445093-50dc08a59d9d?w=400&h=200&fit=crop" alt="">
+            <div class="article-cat">Winter Fashion</div>
+            <div class="article-title">Winter 2025: The Karandi Suit Guide You've Been Waiting For</div>
+            <div class="article-excerpt">Stay warm and stylish this winter with our complete guide to karandi suits — the season's must-have.</div>
+            <div class="article-meta">By <span>Fazii Team</span> &nbsp;|&nbsp; April 20, 2026</div>
+          </div>
+          <div class="article-card" onclick="showArticle(5)">
+            <img src="https://images.unsplash.com/photo-1619603364853-33bcd0d68b00?w=400&h=200&fit=crop" alt="">
+            <div class="article-cat">Review</div>
+            <div class="article-title">We Reviewed 10 Suit Shops in Faisalabad — Here's the Winner</div>
+            <div class="article-excerpt">Quality, price, stitching, and delivery — we tested them all. Find out which shop came out on top.</div>
+            <div class="article-meta">By <span>Fazii Team</span> &nbsp;|&nbsp; April 18, 2026</div>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <div class="section-title">Must <span>Read</span></div>
+        </div>
+        <div>
+          <div class="article-list-item" onclick="showArticle(0)" style="cursor:pointer;">
+            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=90&h=70&fit=crop" alt="">
+            <div><div class="article-list-title">The Complete Guide to Men's Formal Wear in Pakistan</div><div class="article-list-meta">April 29, 2026 &nbsp;|&nbsp; Fashion</div></div>
+          </div>
+          <div class="article-list-item" onclick="showArticle(1)" style="cursor:pointer;">
+            <img src="https://images.unsplash.com/photo-1594938298603-c8148c4b1c5a?w=90&h=70&fit=crop" alt="">
+            <div><div class="article-list-title">Sherwani vs Achkan: Which One is Right for Your Wedding?</div><div class="article-list-meta">April 27, 2026 &nbsp;|&nbsp; Sherwani</div></div>
+          </div>
+          <div class="article-list-item" onclick="showArticle(2)" style="cursor:pointer;">
+            <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=90&h=70&fit=crop" alt="">
+            <div><div class="article-list-title">5 Colors Every Man Should Have in His Wardrobe</div><div class="article-list-meta">April 25, 2026 &nbsp;|&nbsp; Style Tips</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <div class="sidebar-widget">
+          <div class="widget-title">Popular This Week</div>
+          <div class="popular-item"><div class="popular-num">01</div><div><div class="popular-title">How to Style a Sherwani for a Modern Wedding</div><div class="popular-meta">April 29, 2026</div></div></div>
+          <div class="popular-item"><div class="popular-num">02</div><div><div class="popular-title">Best Suit Fabrics for Pakistani Summer</div><div class="popular-meta">April 27, 2026</div></div></div>
+          <div class="popular-item"><div class="popular-num">03</div><div><div class="popular-title">Formal vs Semi-Formal: Know the Difference</div><div class="popular-meta">April 25, 2026</div></div></div>
+          <div class="popular-item"><div class="popular-num">04</div><div><div class="popular-title">The Rs. 1800 Suit That Looks Like Rs. 10,000</div><div class="popular-meta">April 23, 2026</div></div></div>
+        </div>
+
+        <div class="sidebar-widget">
+          <div class="widget-title">Newsletter</div>
+          <p style="font-size:13px;color:#666;font-family:Arial,sans-serif;margin-bottom:14px;">Get the latest fashion tips delivered to your inbox every week.</p>
+          <div class="newsletter">
+            <input type="text" placeholder="Your Name">
+            <input type="email" placeholder="Your Email">
+            <button>Subscribe Now</button>
+          </div>
+        </div>
+
+        <div class="sidebar-widget">
+          <div class="widget-title">Topics</div>
+          <div class="tag-cloud">
+            <span class="tag">Suits</span><span class="tag">Sherwani</span><span class="tag">Wedding</span><span class="tag">Fashion</span><span class="tag">Fabric</span><span class="tag">Faisalabad</span><span class="tag">Karandi</span><span class="tag">Style Tips</span><span class="tag">Lawn</span><span class="tag">Formal</span>
+          </div>
+        </div>
+
+        <div class="sidebar-widget" style="background:#1a1a1a;">
+          <div class="widget-title" style="color:#c9a84c;border-color:#333;">Order on WhatsApp</div>
+          <p style="font-size:13px;color:#888;font-family:Arial,sans-serif;margin-bottom:14px;">Custom suits starting at just Rs. 1,800. Order directly on WhatsApp!</p>
+          <a href="https://wa.me/923001234567?text=Hi%20Fazii%20Brand!%20I%20want%20to%20order%20a%20suit" target="_blank" style="display:block;width:100%;padding:12px;background:#25D366;color:#fff;text-align:center;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:1px;">Chat on WhatsApp</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SHOP SECTION -->
+  <div class="shop-section">
+    <div class="shop-title">FAZII BRAND SHOP</div>
+    <div class="shop-sub">Premium suits starting at Rs. 1,800 — Custom stitched for you</div>
+    <div class="shop-grid">
+      <div class="shop-card">
+        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4b1c5a?w=300&h=180&fit=crop" alt="">
+        <div class="shop-card-body"><div class="shop-card-name">Sherwani Premium</div><div class="shop-card-price">Rs. 1,800</div><button class="shop-card-btn" onclick="waOrder('Sherwani Premium')">Order Now</button></div>
+      </div>
+      <div class="shop-card">
+        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=300&h=180&fit=crop" alt="">
+        <div class="shop-card-body"><div class="shop-card-name">Formal 3-Piece</div><div class="shop-card-price">Rs. 1,800</div><button class="shop-card-btn" onclick="waOrder('Formal 3-Piece')">Order Now</button></div>
+      </div>
+      <div class="shop-card">
+        <img src="https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=300&h=180&fit=crop" alt="">
+        <div class="shop-card-body"><div class="shop-card-name">Dulha Special</div><div class="shop-card-price">Rs. 1,800</div><button class="shop-card-btn" onclick="waOrder('Dulha Special')">Order Now</button></div>
+      </div>
+      <div class="shop-card">
+        <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=300&h=180&fit=crop" alt="">
+        <div class="shop-card-body"><div class="shop-card-name">Casual Kurta</div><div class="shop-card-price">Rs. 1,800</div><button class="shop-card-btn" onclick="waOrder('Casual Kurta')">Order Now</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">FAZII BRAND</div>
+        <div class="footer-desc">Faisalabad's leading fashion blog and suit shop. Premium quality suits, latest trends, and style tips — all in one place.</div>
+      </div>
+      <div>
+        <div class="footer-heading">Quick Links</div>
+        <div class="footer-links">
+          <a href="#">Home</a><a href="#">Fashion</a><a href="#">Suits</a><a href="#">Style Tips</a><a href="#">About Us</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Categories</div>
+        <div class="footer-links">
+          <a href="#">Sherwani</a><a href="#">Formal Suits</a><a href="#">Shalwar Kameez</a><a href="#">Wedding</a><a href="#">Winter Fashion</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Contact</div>
+        <div class="footer-links">
+          <a href="#">WhatsApp: 0300-0000000</a><a href="#">Faisalabad, Pakistan</a><a href="#">Mon-Sat: 9am - 9pm</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Fazii Brand — All Rights Reserved | Fashion Blog & Shop</div>
+  </footer>
+
 </div>
 
-<div class="toast" id="toast"></div>
-<a class="wa-float" href="https://wa.me/923221022052?text=Assalam%20o%20Alaikum!%20Fazii%20Brand%20se%20order%20karna%20hai" target="_blank">💬</a>
+<!-- ARTICLE DETAIL PAGE -->
+<div id="articlePage" class="page">
+  <div class="article-detail">
+    <span class="detail-back" onclick="showPage('home')">← Back to Home</span>
+    <div class="detail-cat" id="detailCat"></div>
+    <h1 class="detail-title" id="detailTitle"></h1>
+    <div class="detail-meta" id="detailMeta"></div>
+    <img class="detail-img" id="detailImg" src="" alt="">
+    <div class="detail-body" id="detailBody"></div>
+  </div>
+  <a class="wa-float" href="https://wa.me/923001234567" target="_blank">💬</a>
+</div>
+
+<a class="wa-float" href="https://wa.me/923001234567?text=Hi%20Fazii%20Brand!" target="_blank" id="waFloat">💬</a>
 
 <script>
-const WA_NUMBER = '923001234567';
+const WA = '923001234567';
 
-const products = [
-  {id:1, name:'Sherwani Premium', fabric:'Silk Blend • Gold Embroidery', price:1800, img:'https://images.unsplash.com/photo-1594938298603-c8148c4b1c5a?w=500&h=400&fit=crop', desc:'Hamare behtareen Sherwani collection ka hissa — shadi aur khaas mauqon ke liye bilkul perfect. Silk blend fabric aur gold embroidery ke saath har koi aapko dekhta reh jayega.', features:['Silk blend fabric','Hand embroidery','Custom fitting','3-5 din mein ready']},
-  {id:2, name:'Formal 3-Piece', fabric:'Wool Blend • Slim Fit', price:1800, img:'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&h=400&fit=crop', desc:'Office aur formal occasions ke liye best choice. Wool blend fabric jo har mausam mein comfortable rahe. Slim fit design jo aapki personality ko highlight kare.', features:['Wool blend fabric','Slim fit cut','Jacket + Shirt + Trouser','Professional look']},
-  {id:3, name:'Shalwar Kameez', fabric:'Lawn Cotton • Casual', price:1800, img:'https://images.unsplash.com/photo-1619603364853-33bcd0d68b00?w=500&h=400&fit=crop', desc:'Rozmarra ke liye best suit — comfortable aur stylish. Premium cotton fabric jo poore din fresh aur acha feel karaye.', features:['Premium cotton','Comfortable fit','Easy to wash','Daily wear perfect']},
-  {id:4, name:'Dulha Special', fabric:'Heavy Embroidery • Wedding', price:1800, img:'https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=500&h=400&fit=crop', desc:'Aapki shadi ki sabse khaas raat ke liye — Dulha Special. Bhaari embroidery aur premium fabric se bana hua yeh suit aapko sab se alag dikhayega.', features:['Heavy zari embroidery','Premium fabric','Dupatta included','Dry clean recommended']},
-  {id:5, name:'Casual Kurta', fabric:'Cotton • Relaxed Fit', price:1800, img:'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=500&h=400&fit=crop', desc:'Ghar mein baithe ya dosto ke saath — Casual Kurta har jagah perfect. Soft cotton fabric aur relaxed fit jo aapko poora din comfortable rakhe.', features:['Soft cotton fabric','Relaxed fit','Multiple colors','Machine washable']},
-  {id:6, name:'Winter Karandi', fabric:'Karandi • Warm Fabric', price:1800, img:'https://images.unsplash.com/photo-1520367445093-50dc08a59d9d?w=500&h=400&fit=crop', desc:'Sardiyon ka best companion — Winter Karandi suit. Warm fabric jo thand mein bhi stylish rakhe. Traditional look with modern comfort.', features:['Warm karandi fabric','Traditional design','Full suit set','Winter special']},
+const articles = [
+  {cat:'Fashion', title:'The Art of the Perfect Suit: Redefining Pakistani Menswear', meta:'By Fazii Team &nbsp;|&nbsp; April 29, 2026 &nbsp;|&nbsp; Fashion', img:'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&h=400&fit=crop', body:`<p>Pakistan's fashion scene is undergoing a quiet revolution. From the bustling markets of Faisalabad to the designer studios of Lahore and Karachi, a new generation of tailors and designers is redefining what it means to dress well as a Pakistani man.</p><h3>The Rise of Custom Tailoring</h3><p>Gone are the days when a suit was just something you wore to a formal event. Today, the modern Pakistani man treats his wardrobe as an expression of identity — carefully curated, thoughtfully tailored, and deeply personal.</p><blockquote>"A great suit doesn't just make you look good. It makes you feel like a different person — confident, powerful, ready for anything."</blockquote><p>Fazii Brand has been at the forefront of this movement, offering premium custom suits at accessible prices. Starting at just Rs. 1,800, every piece is crafted with attention to detail that rivals suits costing ten times as much.</p><h3>What Makes a Perfect Suit?</h3><p>The secret lies in three things: fabric, fit, and finish. The right fabric breathes well in Pakistan's climate while maintaining its shape through long days. The fit must be tailored to your exact measurements — not too tight, not too loose. And the finish must be clean, with precise stitching and well-aligned seams.</p>`},
+  {cat:'Sherwani', title:'Top 5 Sherwani Styles for Wedding Season 2025', meta:'By Fazii Team &nbsp;|&nbsp; April 27, 2026 &nbsp;|&nbsp; Sherwani', img:'https://images.unsplash.com/photo-1594938298603-c8148c4b1c5a?w=800&h=400&fit=crop', body:`<p>Wedding season is here, and if you're looking for the perfect sherwani, you've come to the right place. This year's trends blend classic elegance with modern cuts, creating looks that are both timeless and fresh.</p><h3>1. The Classic Ivory Sherwani</h3><p>Nothing says tradition like an ivory sherwani with gold embroidery. This timeless choice works for both the groom and wedding guests, and pairs beautifully with a cream or gold dupatta.</p><h3>2. The Royal Navy Blue</h3><p>Navy blue has emerged as one of the hottest sherwani colors for 2025. Rich, deep, and sophisticated — it photographs beautifully and stands out in a crowd.</p><blockquote>"The right sherwani can transform any man into royalty on his wedding day."</blockquote><h3>3. The Emerald Green Statement</h3><p>For those who want to make a bold entrance, emerald green sherwanis with intricate silver or gold thread work are having a major moment this season.</p>`},
+  {cat:'Trends', title:'Shalwar Kameez is Making a Global Comeback in 2025', meta:'By Fazii Team &nbsp;|&nbsp; April 25, 2026 &nbsp;|&nbsp; Trends', img:'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=800&h=400&fit=crop', body:`<p>What was once considered purely traditional wear is now appearing on international runways, in global fashion magazines, and on the backs of celebrities worldwide. The shalwar kameez has officially gone global.</p><h3>Why the World is Taking Notice</h3><p>Fashion is cyclical, and the world is increasingly looking to South Asian design for inspiration. The flowing silhouettes, rich fabrics, and intricate embroidery of South Asian menswear offer something that Western fashion simply cannot replicate.</p><blockquote>"The shalwar kameez is the ultimate fusion of comfort and style — and the world is finally catching on."</blockquote><h3>How to Wear It Today</h3><p>The modern shalwar kameez has evolved. Today's versions feature slimmer cuts, contemporary prints, and versatile styling options that work equally well at a formal dinner or a casual gathering with friends.</p>`},
+  {cat:'Style Tips', title:'How to Choose the Right Fabric for Every Occasion', meta:'By Fazii Team &nbsp;|&nbsp; April 23, 2026 &nbsp;|&nbsp; Style Tips', img:'https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=800&h=400&fit=crop', body:`<p>Choosing the right fabric is the foundation of any great outfit. Get it wrong, and even the best design will fall flat. Get it right, and even a simple cut will look spectacular.</p><h3>Lawn — The Summer Essential</h3><p>Lightweight and breathable, lawn is Pakistan's go-to summer fabric. It's perfect for daily wear, casual occasions, and even semi-formal events when crafted well.</p><h3>Karandi — The Winter King</h3><p>When temperatures drop, karandi is your best friend. Warm without being heavy, this fabric drapes beautifully and maintains its shape through an entire day of wear.</p><blockquote>"The right fabric makes all the difference. It's the difference between an outfit that works and one that truly sings."</blockquote><h3>Silk — For Special Occasions</h3><p>Nothing elevates a look quite like silk. Reserve it for weddings, Eid, and other major celebrations where you want to make a lasting impression.</p>`},
+  {cat:'Winter Fashion', title:'Winter 2025: The Karandi Suit Guide You\'ve Been Waiting For', meta:'By Fazii Team &nbsp;|&nbsp; April 20, 2026 &nbsp;|&nbsp; Winter Fashion', img:'https://images.unsplash.com/photo-1520367445093-50dc08a59d9d?w=800&h=400&fit=crop', body:`<p>Winter is coming — and with it, the return of Pakistan's most beloved cold-weather fabric: karandi. This season, karandi suits are more stylish than ever, with new cuts, colors, and patterns that make them versatile enough for any occasion.</p><h3>What is Karandi?</h3><p>Karandi is a mid-weight fabric that offers the perfect balance of warmth and breathability. Unlike heavier wool fabrics, karandi doesn't feel restrictive, making it ideal for Pakistan's relatively mild winters.</p><h3>Top Karandi Colors for 2025</h3><p>This season's hottest karandi colors include deep burgundy, forest green, midnight navy, and classic charcoal grey. These rich, deep tones reflect the season perfectly while remaining sophisticated and timeless.</p><blockquote>"A good karandi suit is an investment. Buy it once, wear it for years."</blockquote>`},
+  {cat:'Review', title:'We Reviewed 10 Suit Shops in Faisalabad — Here\'s the Winner', meta:'By Fazii Team &nbsp;|&nbsp; April 18, 2026 &nbsp;|&nbsp; Review', img:'https://images.unsplash.com/photo-1619603364853-33bcd0d68b00?w=800&h=400&fit=crop', body:`<p>We spent three weeks visiting suit shops across Faisalabad, testing everything from fabric quality and stitching accuracy to delivery times and customer service. Here's what we found.</p><h3>Our Criteria</h3><p>We evaluated each shop on five criteria: fabric quality, stitching accuracy, fit and finish, pricing, and customer service. Each was scored out of 10, giving a maximum score of 50.</p><h3>The Winner: Fazii Brand</h3><p>With a total score of 47/50, Fazii Brand came out clearly on top. The fabric quality was consistently high across all price points, the stitching was precise and clean, and the customer service was exceptional — with fast responses on WhatsApp and flexible delivery options.</p><blockquote>"Fazii Brand isn't just the best value in Faisalabad — it's the best suit shop, period."</blockquote><p>At Rs. 1,800 for a custom suit, Fazii Brand offers extraordinary value. The quality of their work rivals shops charging three to four times as much.</p>`},
 ];
 
-let cart = [];
-let currentProduct = null;
-let selectedSize = 'M';
-
-function renderProducts(){
-  const grid = document.getElementById('productsSection');
-  grid.innerHTML = products.map(p => `
-    <div class="pcard" onclick="showDetail(${p.id})">
-      <img src="${p.img}" alt="${p.name}">
-      <div class="pcard-body">
-        <div class="pcard-name">${p.name}</div>
-        <div class="pcard-fabric">${p.fabric}</div>
-        <div class="pcard-footer">
-          <div class="pcard-price">Rs. ${p.price.toLocaleString()}</div>
-          <button class="view-btn">Detail Dekhein</button>
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
-
-function showDetail(id){
-  currentProduct = products.find(p => p.id === id);
-  document.getElementById('detailImg').src = currentProduct.img;
-  document.getElementById('detailName').textContent = currentProduct.name;
-  document.getElementById('detailPrice').textContent = 'Rs. ' + currentProduct.price.toLocaleString();
-  document.getElementById('detailDesc').textContent = currentProduct.desc;
-  document.getElementById('detailFeatures').innerHTML = currentProduct.features.map(f => `<li>${f}</li>`).join('');
-  selectedSize = 'M';
-  document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.size-btn')[1].classList.add('active');
-  showPage('detail');
+function showArticle(i){
+  const a = articles[i];
+  document.getElementById('detailCat').textContent = a.cat;
+  document.getElementById('detailTitle').textContent = a.title;
+  document.getElementById('detailMeta').innerHTML = a.meta;
+  document.getElementById('detailImg').src = a.img;
+  document.getElementById('detailBody').innerHTML = a.body;
+  showPage('article');
   window.scrollTo(0,0);
 }
 
-function selectSize(btn){
-  document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  selectedSize = btn.textContent;
-}
-
-function addToCart(){
-  if(!currentProduct) return;
-  const existing = cart.find(i => i.id === currentProduct.id && i.size === selectedSize);
-  if(existing){ existing.qty++; }
-  else { cart.push({...currentProduct, size: selectedSize, qty: 1}); }
-  updateCartCount();
-  showToast(currentProduct.name + ' cart mein add ho gaya!');
-}
-
-function removeFromCart(id, size){
-  cart = cart.filter(i => !(i.id === id && i.size === size));
-  updateCartCount();
-  renderCart();
-}
-
-function updateCartCount(){
-  const total = cart.reduce((s,i) => s + i.qty, 0);
-  document.getElementById('cartCount').textContent = total;
-}
-
-function renderCart(){
-  const container = document.getElementById('cartItems');
-  const summary = document.getElementById('cartSummary');
-  if(cart.length === 0){
-    container.innerHTML = '<div class="empty-cart"><p>Cart khali hai!</p><button class="btn-gold" onclick="showPage(\'home\')">Shopping Karein</button></div>';
-    summary.innerHTML = '';
-    return;
-  }
-  container.innerHTML = cart.map(item => `
-    <div class="cart-item">
-      <img src="${item.img}" alt="${item.name}">
-      <div class="cart-item-info">
-        <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-size">Size: ${item.size} • Qty: ${item.qty}</div>
-        <div class="cart-item-price">Rs. ${(item.price * item.qty).toLocaleString()}</div>
-      </div>
-      <button class="remove-btn" onclick="removeFromCart(${item.id}, '${item.size}')">✕</button>
-    </div>
-  `).join('');
-  const subtotal = cart.reduce((s,i) => s + i.price * i.qty, 0);
-  summary.innerHTML = `
-    <div class="cart-total">
-      <div class="total-row"><span>Subtotal</span><span>Rs. ${subtotal.toLocaleString()}</span></div>
-      <div class="total-row"><span>Delivery</span><span>Free</span></div>
-      <div class="total-final"><span>Total</span><span>Rs. ${subtotal.toLocaleString()}</span></div>
-      <button class="checkout-btn" onclick="whatsappCheckout()">WhatsApp pe Order Complete Karein</button>
-    </div>
-  `;
-}
-
-function whatsappCheckout(){
-  const items = cart.map(i => `${i.name} (Size: ${i.size}) x${i.qty} = Rs.${i.price*i.qty}`).join('%0A');
-  const total = cart.reduce((s,i) => s + i.price*i.qty, 0);
-  const msg = `Assalam o Alaikum! Fazii Brand Order:%0A%0A${items}%0A%0ATotal: Rs.${total}`;
-  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
-}
-
-function waOrder(){
-  if(!currentProduct) return;
-  const msg = `Assalam o Alaikum! Mujhe ${currentProduct.name} chahiye (Size: ${selectedSize}) - Rs.${currentProduct.price}`;
-  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
-}
-
-function showPage(page){
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  if(page === 'home') document.getElementById('homePage').classList.add('active');
-  else if(page === 'detail') document.getElementById('detailPage').classList.add('active');
-  else if(page === 'cart'){ document.getElementById('cartPage').classList.add('active'); renderCart(); }
+function showPage(p){
+  document.querySelectorAll('.page').forEach(x => x.classList.remove('active'));
+  document.getElementById('waFloat').style.display = p==='article' ? 'none' : 'flex';
+  if(p==='home') document.getElementById('homePage').classList.add('active');
+  else if(p==='article') document.getElementById('articlePage').classList.add('active');
   window.scrollTo(0,0);
 }
 
-function showToast(msg){
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.style.display = 'block';
-  setTimeout(() => t.style.display = 'none', 2500);
+function waOrder(name){
+  window.open(`https://wa.me/${WA}?text=Hi%20Fazii%20Brand!%20I%20want%20to%20order%20${encodeURIComponent(name)}%20-%20Rs.1800`, '_blank');
 }
-
-renderProducts();
 </script>
 </body>
 </html>
