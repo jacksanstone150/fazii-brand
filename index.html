@@ -1,599 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FAZII BRAND | Jeans Suit Store</title>
-  <style>
-    :root {
-      --bg: #0c0f14;
-      --surface: #141a22;
-      --surface-2: #1a222c;
-      --text: #f5f7fa;
-      --muted: #9ba7b5;
-      --line: #253140;
-      --accent: #f6c453;
-      --accent-dark: #dba733;
-      --success: #2ec27e;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAZII BRAND</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;background:#0d0d0d;color:#fff;}
+nav{background:#0d0d0d;padding:16px 30px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222;position:sticky;top:0;z-index:200;}
+.logo{color:#c9a84c;font-size:20px;font-weight:700;letter-spacing:3px;}
+.cart-btn{background:#c9a84c;color:#0d0d0d;border:none;padding:9px 18px;border-radius:4px;cursor:pointer;font-weight:700;font-size:13px;}
+.cart-count{background:#fff;color:#0d0d0d;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-left:4px;}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+/* PAGES */
+.page{display:none;}
+.page.active{display:block;}
 
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: radial-gradient(circle at top right, #1b2430 0%, var(--bg) 40%);
-      color: var(--text);
-      min-height: 100vh;
-    }
+/* HOME */
+.hero{padding:60px 30px;text-align:center;border-bottom:1px solid #1a1a1a;}
+.hero h1{font-size:36px;color:#fff;margin-bottom:8px;}
+.hero h1 span{color:#c9a84c;}
+.hero p{color:#777;font-size:14px;margin-bottom:24px;}
+.btn-gold{background:#c9a84c;color:#0d0d0d;padding:12px 32px;border:none;border-radius:3px;font-size:14px;font-weight:700;cursor:pointer;}
 
-    .container {
-      width: min(1120px, 92%);
-      margin: 0 auto;
-    }
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:40px 30px;}
+.pcard{background:#151515;border:1px solid #222;border-radius:8px;overflow:hidden;cursor:pointer;transition:all 0.2s;}
+.pcard:hover{border-color:#c9a84c;transform:translateY(-4px);}
+.pcard img{width:100%;height:200px;object-fit:cover;}
+.pcard-body{padding:14px;}
+.pcard-name{font-size:14px;font-weight:700;margin-bottom:4px;}
+.pcard-fabric{font-size:11px;color:#555;margin-bottom:8px;}
+.pcard-price{font-size:16px;color:#c9a84c;font-weight:700;}
+.pcard-footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px;}
+.view-btn{background:transparent;color:#c9a84c;border:1px solid #c9a84c;padding:6px 14px;border-radius:3px;font-size:12px;cursor:pointer;}
+.view-btn:hover{background:#c9a84c;color:#0d0d0d;}
 
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(12, 15, 20, 0.95);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(6px);
-    }
+/* DETAIL PAGE */
+.detail{padding:30px;}
+.back-btn{background:transparent;color:#c9a84c;border:none;font-size:13px;cursor:pointer;margin-bottom:24px;display:flex;align-items:center;gap:6px;}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:900px;}
+.detail-img{width:100%;border-radius:8px;height:400px;object-fit:cover;}
+.detail-tag{color:#c9a84c;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.detail-name{font-size:28px;font-weight:700;margin-bottom:8px;}
+.detail-price{font-size:26px;color:#c9a84c;font-weight:700;margin-bottom:16px;}
+.detail-desc{color:#888;font-size:13px;line-height:1.7;margin-bottom:20px;}
+.detail-features{margin-bottom:24px;}
+.detail-features li{color:#aaa;font-size:13px;margin-bottom:6px;list-style:none;padding-left:16px;position:relative;}
+.detail-features li::before{content:'✓';color:#c9a84c;position:absolute;left:0;}
+.size-label{font-size:12px;color:#777;margin-bottom:8px;}
+.sizes{display:flex;gap:8px;margin-bottom:20px;}
+.size-btn{width:38px;height:38px;border:1px solid #333;background:transparent;color:#aaa;border-radius:4px;cursor:pointer;font-size:13px;}
+.size-btn.active,.size-btn:hover{border-color:#c9a84c;color:#c9a84c;}
+.add-cart-btn{width:100%;padding:14px;background:#c9a84c;color:#0d0d0d;border:none;border-radius:4px;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:10px;}
+.add-cart-btn:hover{background:#e0bc5a;}
+.wa-order-btn{width:100%;padding:12px;background:#25D366;color:#fff;border:none;border-radius:4px;font-size:14px;font-weight:700;cursor:pointer;}
 
-    .nav-inner {
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
+/* CART PAGE */
+.cart-page{padding:30px;max-width:700px;margin:0 auto;}
+.cart-page h2{font-size:22px;margin-bottom:24px;color:#c9a84c;}
+.cart-item{display:flex;gap:16px;background:#151515;border:1px solid #222;border-radius:8px;padding:14px;margin-bottom:12px;align-items:center;}
+.cart-item img{width:70px;height:70px;object-fit:cover;border-radius:4px;}
+.cart-item-info{flex:1;}
+.cart-item-name{font-size:14px;font-weight:700;margin-bottom:3px;}
+.cart-item-size{font-size:12px;color:#666;margin-bottom:6px;}
+.cart-item-price{font-size:15px;color:#c9a84c;font-weight:700;}
+.remove-btn{background:transparent;color:#555;border:none;cursor:pointer;font-size:18px;}
+.remove-btn:hover{color:#e24b4a;}
+.cart-total{background:#151515;border:1px solid #c9a84c;border-radius:8px;padding:20px;margin-top:20px;}
+.total-row{display:flex;justify-content:space-between;font-size:14px;color:#aaa;margin-bottom:8px;}
+.total-final{display:flex;justify-content:space-between;font-size:18px;font-weight:700;color:#c9a84c;margin-top:12px;padding-top:12px;border-top:1px solid #333;}
+.checkout-btn{width:100%;padding:14px;background:#c9a84c;color:#0d0d0d;border:none;border-radius:4px;font-size:15px;font-weight:700;cursor:pointer;margin-top:16px;}
+.empty-cart{text-align:center;padding:60px 20px;color:#555;}
+.empty-cart p{font-size:16px;margin-bottom:16px;}
 
-    .brand {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.6px;
-    }
+/* TOAST */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#c9a84c;color:#0d0d0d;padding:12px 24px;border-radius:4px;font-weight:700;font-size:13px;display:none;z-index:999;}
 
-    .phone {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:24px;right:24px;background:#25D366;color:#fff;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;text-decoration:none;z-index:998;}
 
-    .hero {
-      padding: 52px 0 24px;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: clamp(1.9rem, 3.8vw, 3rem);
-      margin-bottom: 10px;
-      color: var(--accent);
-    }
-
-    .hero p {
-      color: var(--muted);
-      max-width: 740px;
-      margin: 0 auto;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 1fr 330px;
-      gap: 22px;
-      align-items: start;
-      padding: 24px 0 40px;
-    }
-
-    .products h2,
-    .cart h2 {
-      margin-bottom: 14px;
-      font-size: 1.25rem;
-    }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-    }
-
-    .image {
-      height: 130px;
-      background: linear-gradient(145deg, #1f2935, #111722);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .card-content {
-      padding: 14px;
-    }
-
-    .card h3 {
-      font-size: 1rem;
-      margin-bottom: 4px;
-    }
-
-    .price {
-      color: var(--accent);
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .small {
-      color: var(--muted);
-      font-size: 0.88rem;
-      margin-bottom: 12px;
-      min-height: 34px;
-    }
-
-    button {
-      cursor: pointer;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-    }
-
-    .btn-primary {
-      width: 100%;
-      background: var(--accent);
-      color: #1a1407;
-      padding: 10px 12px;
-      transition: background 0.2s ease;
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-dark);
-    }
-
-    .cart {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 16px;
-      position: sticky;
-      top: 88px;
-    }
-
-    .cart-items {
-      list-style: none;
-      display: grid;
-      gap: 8px;
-      margin: 12px 0;
-      max-height: 280px;
-      overflow: auto;
-      padding-right: 2px;
-    }
-
-    .cart-item {
-      background: var(--surface-2);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 9px 10px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.9rem;
-    }
-
-    .cart-empty {
-      color: var(--muted);
-      font-size: 0.92rem;
-      padding: 8px 0 12px;
-    }
-
-    .cart-total {
-      margin: 12px 0;
-      font-size: 1rem;
-      color: var(--text);
-    }
-
-    .checkout {
-      width: 100%;
-      background: var(--success);
-      color: #07150d;
-      padding: 11px 14px;
-      margin-bottom: 10px;
-    }
-
-    .checkout:disabled {
-      opacity: 0.55;
-      cursor: not-allowed;
-    }
-
-    .clear {
-      width: 100%;
-      background: transparent;
-      color: var(--muted);
-      border: 1px solid var(--line);
-      padding: 10px 14px;
-    }
-
-    .popup-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.62);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 30;
-      padding: 16px;
-    }
-
-    .popup-backdrop.show {
-      display: flex;
-    }
-
-    .popup {
-      width: min(450px, 100%);
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 20px;
-    }
-
-    .popup h3 {
-      margin-bottom: 8px;
-      color: var(--accent);
-    }
-
-    .popup p {
-      color: var(--muted);
-      margin-bottom: 14px;
-      font-size: 0.93rem;
-    }
-
-    .pay-options {
-      display: grid;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .pay-btn {
-      background: var(--surface-2);
-      border: 1px solid var(--line);
-      color: var(--text);
-      text-align: left;
-      padding: 11px 12px;
-    }
-
-    .pay-btn.active {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .popup-actions {
-      display: flex;
-      gap: 10px;
-    }
-
-    .popup-actions button {
-      flex: 1;
-      padding: 10px;
-    }
-
-    .confirm {
-      background: var(--accent);
-      color: #1a1407;
-    }
-
-    .cancel {
-      background: transparent;
-      color: var(--muted);
-      border: 1px solid var(--line);
-    }
-
-    .whatsapp {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      background: #25d366;
-      color: #04170d;
-      text-decoration: none;
-      font-weight: 700;
-      padding: 11px 14px;
-      border-radius: 999px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.32);
-      z-index: 25;
-    }
-
-    @media (max-width: 920px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
-
-      .cart {
-        position: static;
-      }
-    }
-  </style>
+@media(max-width:600px){
+  .detail-grid{grid-template-columns:1fr;}
+  .detail-img{height:260px;}
+}
+</style>
 </head>
 <body>
-  <header class="navbar">
-    <div class="container nav-inner">
-      <div class="brand">FAZII BRAND</div>
-      <div class="phone">Call / WhatsApp: 03132436992</div>
-    </div>
-  </header>
 
-  <section class="hero">
-    <div class="container">
-      <h1>Modern Jeans Suit Collection</h1>
-      <p>Shop premium jeans suits with a sleek dark-themed experience. Add products to your cart, checkout, and pay via EasyPaisa or JazzCash.</p>
-    </div>
-  </section>
+<nav>
+  <div class="logo">FAZII BRAND</div>
+  <button class="cart-btn" onclick="showPage('cart')">
+    Cart <span class="cart-count" id="cartCount">0</span>
+  </button>
+</nav>
 
-  <main class="container layout">
-    <section class="products">
-      <h2>Product Listing (Jeans Suits)</h2>
-      <div class="products-grid" id="productsGrid"></div>
-    </section>
-
-    <aside class="cart">
-      <h2>Your Cart</h2>
-      <div class="cart-empty" id="cartEmpty">No items added yet.</div>
-      <ul class="cart-items" id="cartItems"></ul>
-      <div class="cart-total">Total: <strong id="cartTotal">Rs 0</strong></div>
-      <button class="checkout" id="checkoutBtn" disabled>Checkout</button>
-      <button class="clear" id="clearBtn">Clear Cart</button>
-    </aside>
-  </main>
-
-  <div class="popup-backdrop" id="paymentPopup">
-    <div class="popup">
-      <h3>Select Payment Method</h3>
-      <p>Phone number for payment confirmation: <strong>03132436992</strong></p>
-      <div class="pay-options">
-        <button class="pay-btn" data-method="EasyPaisa">EasyPaisa</button>
-        <button class="pay-btn" data-method="JazzCash">JazzCash</button>
-      </div>
-      <div class="popup-actions">
-        <button class="confirm" id="confirmPaymentBtn">Confirm Order</button>
-        <button class="cancel" id="cancelPaymentBtn">Cancel</button>
-      </div>
-    </div>
+<!-- HOME PAGE -->
+<div id="homePage" class="page active">
+  <div class="hero">
+    <h1>Style Jo Bolti Hai<br><span>Aapki Shakhsiyat</span></h1>
+    <p>Har suit ek kahani — sirf aapke liye tailored • Faisalabad</p>
+    <button class="btn-gold" onclick="document.getElementById('productsSection').scrollIntoView({behavior:'smooth'})">Collection Dekhein</button>
   </div>
+  <div id="productsSection" class="products-grid" id="productsGrid"></div>
+</div>
 
-  <a
-    class="whatsapp"
-    id="whatsappBtn"
-    href="https://wa.me/923132436992?text=Hello%20FAZII%20BRAND%2C%20I%20want%20to%20confirm%20my%20order."
-    target="_blank"
-    rel="noopener noreferrer"
-  >Order on WhatsApp</a>
-
-  <script>
-    const products = [
-      { id: 1, name: "Urban Blue Jeans Suit", price: 3200, details: "Slim-fit denim weave with modern cut." },
-      { id: 2, name: "Midnight Black Jeans Suit", price: 3400, details: "Premium black wash for formal style." },
-      { id: 3, name: "Classic Indigo Jeans Suit", price: 3000, details: "Balanced comfort and elegant look." },
-      { id: 4, name: "Royal Stone Jeans Suit", price: 3600, details: "Stone-tone finish with refined stitching." },
-      { id: 5, name: "Signature Dark Denim Suit", price: 3800, details: "Top-tier fabric for premium appearance." },
-      { id: 6, name: "Wedding Special Jeans Suit", price: 4000, details: "Festive look made for special events." }
-    ];
-
-    const cart = [];
-    let selectedPaymentMethod = "";
-
-    const productsGrid = document.getElementById("productsGrid");
-    const cartItems = document.getElementById("cartItems");
-    const cartEmpty = document.getElementById("cartEmpty");
-    const cartTotal = document.getElementById("cartTotal");
-    const checkoutBtn = document.getElementById("checkoutBtn");
-    const clearBtn = document.getElementById("clearBtn");
-    const paymentPopup = document.getElementById("paymentPopup");
-    const confirmPaymentBtn = document.getElementById("confirmPaymentBtn");
-    const cancelPaymentBtn = document.getElementById("cancelPaymentBtn");
-    const whatsappBtn = document.getElementById("whatsappBtn");
-    const paymentButtons = Array.from(document.querySelectorAll(".pay-btn"));
-
-    function formatPrice(value) {
-      return "Rs " + value.toLocaleString();
-    }
-
-    function renderProducts() {
-      productsGrid.innerHTML = products
-        .map(function (product) {
-          return (
-            '<article class="card">' +
-            '<div class="image"></div>' +
-            '<div class="card-content">' +
-            "<h3>" + product.name + "</h3>" +
-            '<div class="price">' + formatPrice(product.price) + "</div>" +
-            '<div class="small">' + product.details + "</div>" +
-            '<button class="btn-primary" data-id="' + product.id + '">Add to Cart</button>' +
-            "</div>" +
-            "</article>"
-          );
-        })
-        .join("");
-    }
-
-    function updateWhatsAppLink() {
-      if (cart.length === 0) {
-        whatsappBtn.href = "https://wa.me/923132436992?text=Hello%20FAZII%20BRAND%2C%20I%20want%20to%20confirm%20my%20order.";
-        return;
-      }
-
-      const lines = cart.map(function (item) {
-        return item.name + " x" + item.qty + " = " + formatPrice(item.qty * item.price);
-      });
-
-      const total = cart.reduce(function (sum, item) {
-        return sum + item.price * item.qty;
-      }, 0);
-
-      const message = [
-        "Hello FAZII BRAND, I want to place this order:",
-        "",
-        lines.join("\n"),
-        "",
-        "Total: " + formatPrice(total),
-        "Payment method: " + (selectedPaymentMethod || "Not selected"),
-        "My phone: 03132436992"
-      ].join("\n");
-
-      whatsappBtn.href = "https://wa.me/923132436992?text=" + encodeURIComponent(message);
-    }
-
-    function renderCart() {
-      cartItems.innerHTML = "";
-
-      if (cart.length === 0) {
-        cartEmpty.style.display = "block";
-        checkoutBtn.disabled = true;
-        cartTotal.textContent = "Rs 0";
-        updateWhatsAppLink();
-        return;
-      }
-
-      cartEmpty.style.display = "none";
-      checkoutBtn.disabled = false;
-
-      let total = 0;
-      cart.forEach(function (item) {
-        total += item.price * item.qty;
-        const li = document.createElement("li");
-        li.className = "cart-item";
-        li.innerHTML = "<span>" + item.name + " x" + item.qty + "</span><strong>" + formatPrice(item.price * item.qty) + "</strong>";
-        cartItems.appendChild(li);
-      });
-
-      cartTotal.textContent = formatPrice(total);
-      updateWhatsAppLink();
-    }
-
-    function addToCart(productId) {
-      const product = products.find(function (p) {
-        return p.id === productId;
-      });
-      if (!product) {
-        return;
-      }
-
-      const existing = cart.find(function (item) {
-        return item.id === product.id;
-      });
-
-      if (existing) {
-        existing.qty += 1;
-      } else {
-        cart.push({
-          id: product.id,
-          name: product.name,
-          price: product.price,
-          qty: 1
-        });
-      }
-
-      renderCart();
-    }
-
-    function openPaymentPopup() {
-      paymentPopup.classList.add("show");
-    }
-
-    function closePaymentPopup() {
-      paymentPopup.classList.remove("show");
-    }
-
-    productsGrid.addEventListener("click", function (event) {
-      const button = event.target.closest("button[data-id]");
-      if (!button) {
-        return;
-      }
-      addToCart(Number(button.dataset.id));
-    });
-
-    clearBtn.addEventListener("click", function () {
-      cart.length = 0;
-      selectedPaymentMethod = "";
-      paymentButtons.forEach(function (btn) {
-        btn.classList.remove("active");
-      });
-      renderCart();
-    });
-
-    checkoutBtn.addEventListener("click", function () {
-      if (cart.length === 0) {
-        return;
-      }
-      openPaymentPopup();
-    });
-
-    paymentButtons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        selectedPaymentMethod = button.dataset.method;
-        paymentButtons.forEach(function (btn) {
-          btn.classList.remove("active");
-        });
-        button.classList.add("active");
-      });
-    });
-
-    cancelPaymentBtn.addEventListener("click", closePaymentPopup);
-    paymentPopup.addEventListener("click", function (event) {
-      if (event.target === paymentPopup) {
-        closePaymentPopup();
-      }
-    });
-
-    confirmPaymentBtn.addEventListener("click", function () {
-      if (cart.length === 0) {
-        alert("Your cart is empty.");
-        closePaymentPopup();
-        return;
-      }
-      if (!selectedPaymentMethod) {
-        alert("Please select EasyPaisa or JazzCash.");
-        return;
-      }
-
-      updateWhatsAppLink();
-      alert("Order placed with " + selectedPaymentMethod + ". Please confirm on WhatsApp.");
-      closePaymentPopup();
-      window.open(whatsappBtn.href, "_blank", "noopener");
-    });
-
-    renderProducts();
-    renderCart();
-  </script>
-
-  <div id="paymentModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000000cc;">
-  <div style="background:#fff; padding:20px; margin:100px auto; max-width:400px; text-align:center; border-radius:10px;">
-    
-    <h2>Payment Method</h2>
-
-    <p>EasyPaisa / JazzCash</p>
-    <h3 style="color:green;">03132436992</h3>
-
-    <p>Payment k baad screenshot WhatsApp par bhejein</p>
-
-    <a href="https://wa.me/923132436992" target="_blank">
-      <button>Confirm on WhatsApp</button>
-    </a>
-
-    <br><br>
-    <button onclick="document.getElementById('paymentModal').style.display='none'">
-      Close
-    </button>
-
+<!-- DETAIL PAGE -->
+<div id="detailPage" class="page">
+  <div class="detail">
+    <button class="back-btn" onclick="showPage('home')">← Wapas Jao</button>
+    <div class="detail-grid">
+      <div><img id="detailImg" src="" alt=""></div>
+      <div>
+        <div class="detail-tag">FAZII BRAND</div>
+        <div class="detail-name" id="detailName"></div>
+        <div class="detail-price" id="detailPrice"></div>
+        <div class="detail-desc" id="detailDesc"></div>
+        <ul class="detail-features" id="detailFeatures"></ul>
+        <div class="size-label">Size chunein:</div>
+        <div class="sizes">
+          <button class="size-btn active" onclick="selectSize(this)">S</button>
+          <button class="size-btn" onclick="selectSize(this)">M</button>
+          <button class="size-btn" onclick="selectSize(this)">L</button>
+          <button class="size-btn" onclick="selectSize(this)">XL</button>
+          <button class="size-btn" onclick="selectSize(this)">XXL</button>
+        </div>
+        <button class="add-cart-btn" onclick="addToCart()">+ Add to Cart</button>
+        <button class="wa-order-btn" onclick="waOrder()">WhatsApp pe Order Karein</button>
+      </div>
+    </div>
   </div>
 </div>
-  
+
+<!-- CART PAGE -->
+<div id="cartPage" class="page">
+  <div class="cart-page">
+    <button class="back-btn" onclick="showPage('home')">← Shopping Jaari Rakhein</button>
+    <h2>Aapki Cart</h2>
+    <div id="cartItems"></div>
+    <div id="cartSummary"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<a class="wa-float" href="https://wa.me/923221022052?text=Assalam%20o%20Alaikum!%20Fazii%20Brand%20se%20order%20karna%20hai" target="_blank">💬</a>
+
+<script>
+const WA_NUMBER = '923001234567';
+
+const products = [
+  {id:1, name:'Sherwani Premium', fabric:'Silk Blend • Gold Embroidery', price:1800, img:'https://images.unsplash.com/photo-1594938298603-c8148c4b1c5a?w=500&h=400&fit=crop', desc:'Hamare behtareen Sherwani collection ka hissa — shadi aur khaas mauqon ke liye bilkul perfect. Silk blend fabric aur gold embroidery ke saath har koi aapko dekhta reh jayega.', features:['Silk blend fabric','Hand embroidery','Custom fitting','3-5 din mein ready']},
+  {id:2, name:'Formal 3-Piece', fabric:'Wool Blend • Slim Fit', price:1800, img:'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&h=400&fit=crop', desc:'Office aur formal occasions ke liye best choice. Wool blend fabric jo har mausam mein comfortable rahe. Slim fit design jo aapki personality ko highlight kare.', features:['Wool blend fabric','Slim fit cut','Jacket + Shirt + Trouser','Professional look']},
+  {id:3, name:'Shalwar Kameez', fabric:'Lawn Cotton • Casual', price:1800, img:'https://images.unsplash.com/photo-1619603364853-33bcd0d68b00?w=500&h=400&fit=crop', desc:'Rozmarra ke liye best suit — comfortable aur stylish. Premium cotton fabric jo poore din fresh aur acha feel karaye.', features:['Premium cotton','Comfortable fit','Easy to wash','Daily wear perfect']},
+  {id:4, name:'Dulha Special', fabric:'Heavy Embroidery • Wedding', price:1800, img:'https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=500&h=400&fit=crop', desc:'Aapki shadi ki sabse khaas raat ke liye — Dulha Special. Bhaari embroidery aur premium fabric se bana hua yeh suit aapko sab se alag dikhayega.', features:['Heavy zari embroidery','Premium fabric','Dupatta included','Dry clean recommended']},
+  {id:5, name:'Casual Kurta', fabric:'Cotton • Relaxed Fit', price:1800, img:'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=500&h=400&fit=crop', desc:'Ghar mein baithe ya dosto ke saath — Casual Kurta har jagah perfect. Soft cotton fabric aur relaxed fit jo aapko poora din comfortable rakhe.', features:['Soft cotton fabric','Relaxed fit','Multiple colors','Machine washable']},
+  {id:6, name:'Winter Karandi', fabric:'Karandi • Warm Fabric', price:1800, img:'https://images.unsplash.com/photo-1520367445093-50dc08a59d9d?w=500&h=400&fit=crop', desc:'Sardiyon ka best companion — Winter Karandi suit. Warm fabric jo thand mein bhi stylish rakhe. Traditional look with modern comfort.', features:['Warm karandi fabric','Traditional design','Full suit set','Winter special']},
+];
+
+let cart = [];
+let currentProduct = null;
+let selectedSize = 'M';
+
+function renderProducts(){
+  const grid = document.getElementById('productsSection');
+  grid.innerHTML = products.map(p => `
+    <div class="pcard" onclick="showDetail(${p.id})">
+      <img src="${p.img}" alt="${p.name}">
+      <div class="pcard-body">
+        <div class="pcard-name">${p.name}</div>
+        <div class="pcard-fabric">${p.fabric}</div>
+        <div class="pcard-footer">
+          <div class="pcard-price">Rs. ${p.price.toLocaleString()}</div>
+          <button class="view-btn">Detail Dekhein</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function showDetail(id){
+  currentProduct = products.find(p => p.id === id);
+  document.getElementById('detailImg').src = currentProduct.img;
+  document.getElementById('detailName').textContent = currentProduct.name;
+  document.getElementById('detailPrice').textContent = 'Rs. ' + currentProduct.price.toLocaleString();
+  document.getElementById('detailDesc').textContent = currentProduct.desc;
+  document.getElementById('detailFeatures').innerHTML = currentProduct.features.map(f => `<li>${f}</li>`).join('');
+  selectedSize = 'M';
+  document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.size-btn')[1].classList.add('active');
+  showPage('detail');
+  window.scrollTo(0,0);
+}
+
+function selectSize(btn){
+  document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedSize = btn.textContent;
+}
+
+function addToCart(){
+  if(!currentProduct) return;
+  const existing = cart.find(i => i.id === currentProduct.id && i.size === selectedSize);
+  if(existing){ existing.qty++; }
+  else { cart.push({...currentProduct, size: selectedSize, qty: 1}); }
+  updateCartCount();
+  showToast(currentProduct.name + ' cart mein add ho gaya!');
+}
+
+function removeFromCart(id, size){
+  cart = cart.filter(i => !(i.id === id && i.size === size));
+  updateCartCount();
+  renderCart();
+}
+
+function updateCartCount(){
+  const total = cart.reduce((s,i) => s + i.qty, 0);
+  document.getElementById('cartCount').textContent = total;
+}
+
+function renderCart(){
+  const container = document.getElementById('cartItems');
+  const summary = document.getElementById('cartSummary');
+  if(cart.length === 0){
+    container.innerHTML = '<div class="empty-cart"><p>Cart khali hai!</p><button class="btn-gold" onclick="showPage(\'home\')">Shopping Karein</button></div>';
+    summary.innerHTML = '';
+    return;
+  }
+  container.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <img src="${item.img}" alt="${item.name}">
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-size">Size: ${item.size} • Qty: ${item.qty}</div>
+        <div class="cart-item-price">Rs. ${(item.price * item.qty).toLocaleString()}</div>
+      </div>
+      <button class="remove-btn" onclick="removeFromCart(${item.id}, '${item.size}')">✕</button>
+    </div>
+  `).join('');
+  const subtotal = cart.reduce((s,i) => s + i.price * i.qty, 0);
+  summary.innerHTML = `
+    <div class="cart-total">
+      <div class="total-row"><span>Subtotal</span><span>Rs. ${subtotal.toLocaleString()}</span></div>
+      <div class="total-row"><span>Delivery</span><span>Free</span></div>
+      <div class="total-final"><span>Total</span><span>Rs. ${subtotal.toLocaleString()}</span></div>
+      <button class="checkout-btn" onclick="whatsappCheckout()">WhatsApp pe Order Complete Karein</button>
+    </div>
+  `;
+}
+
+function whatsappCheckout(){
+  const items = cart.map(i => `${i.name} (Size: ${i.size}) x${i.qty} = Rs.${i.price*i.qty}`).join('%0A');
+  const total = cart.reduce((s,i) => s + i.price*i.qty, 0);
+  const msg = `Assalam o Alaikum! Fazii Brand Order:%0A%0A${items}%0A%0ATotal: Rs.${total}`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
+}
+
+function waOrder(){
+  if(!currentProduct) return;
+  const msg = `Assalam o Alaikum! Mujhe ${currentProduct.name} chahiye (Size: ${selectedSize}) - Rs.${currentProduct.price}`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+function showPage(page){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  if(page === 'home') document.getElementById('homePage').classList.add('active');
+  else if(page === 'detail') document.getElementById('detailPage').classList.add('active');
+  else if(page === 'cart'){ document.getElementById('cartPage').classList.add('active'); renderCart(); }
+  window.scrollTo(0,0);
+}
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 2500);
+}
+
+renderProducts();
+</script>
 </body>
 </html>
