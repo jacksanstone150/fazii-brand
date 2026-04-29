@@ -572,5 +572,28 @@
     renderProducts();
     renderCart();
   </script>
+
+  <div id="paymentModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000000cc;">
+  <div style="background:#fff; padding:20px; margin:100px auto; max-width:400px; text-align:center; border-radius:10px;">
+    
+    <h2>Payment Method</h2>
+
+    <p>EasyPaisa / JazzCash</p>
+    <h3 style="color:green;">03132436992</h3>
+
+    <p>Payment k baad screenshot WhatsApp par bhejein</p>
+
+    <a href="https://wa.me/923132436992" target="_blank">
+      <button>Confirm on WhatsApp</button>
+    </a>
+
+    <br><br>
+    <button onclick="document.getElementById('paymentModal').style.display='none'">
+      Close
+    </button>
+
+  </div>
+</div>
+  
 </body>
 </html>
