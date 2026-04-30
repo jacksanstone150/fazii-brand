@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAZII BRAND — Premium Fashion Store</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;background:#f8f8f8;color:#1a1a1a;}
+.topbar{background:#c9a84c;padding:7px 0;text-align:center;}
+.topbar p{font-size:12px;color:#1a1a1a;font-weight:700;}
+nav{background:#1a1a1a;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:200;}
+.logo{color:#c9a84c;font-size:22px;font-weight:700;letter-spacing:3px;}
+.nav-right{display:flex;align-items:center;gap:16px;}
+.nav-links a{color:#ccc;text-decoration:none;font-size:12px;margin-left:16px;}
+.nav-links a:hover{color:#c9a84c;}
+.cart-btn{background:#c9a84c;color:#1a1a1a;border:none;padding:8px 16px;border-radius:4px;cursor:pointer;font-weight:700;font-size:13px;}
+.cart-count{background:#1a1a1a;color:#c9a84c;border-radius:50%;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-left:4px;}
+.cat-nav{background:#fff;border-bottom:2px solid #f0f0f0;padding:0 16px;display:flex;gap:0;overflow-x:auto;}
+.cat-nav a{padding:13px 16px;font-size:12px;color:#555;text-decoration:none;white-space:nowrap;border-bottom:3px solid transparent;cursor:pointer;font-weight:600;}
+.cat-nav a:hover,.cat-nav a.active{color:#c9a84c;border-bottom-color:#c9a84c;}
+.page{display:none;}.page.active{display:block;}
+.hero{background:linear-gradient(135deg,#1a1a1a,#2d2d2d);padding:50px 24px;text-align:center;}
+.hero-tag{color:#c9a84c;font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;}
+.hero h1{color:#fff;font-size:28px;font-weight:700;margin-bottom:8px;}
+.hero h1 span{color:#c9a84c;}
+.hero p{color:#aaa;font-size:13px;margin-bottom:24px;}
+.hero-cats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.hero-cat-btn{background:transparent;border:1px solid #c9a84c;color:#c9a84c;padding:9px 16px;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600;}
+.hero-cat-btn:hover{background:#c9a84c;color:#1a1a1a;}
+.section{padding:24px;}
+.section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+.section-title{font-size:18px;font-weight:700;}
+.section-title span{color:#c9a84c;}
+.see-all{font-size:12px;color:#c9a84c;cursor:pointer;text-decoration:none;}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;}
+.pcard{background:#fff;border-radius:8px;overflow:hidden;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.08);transition:transform 0.2s,box-shadow 0.2s;}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 4px 16px rgba(0,0,0,0.15);}
+.pcard-img{position:relative;overflow:hidden;}
+.pcard-img img{width:100%;height:210px;object-fit:cover;transition:transform 0.3s;}
+.pcard:hover img{transform:scale(1.05);}
+.pcard-badge{position:absolute;top:8px;left:8px;background:#c9a84c;color:#1a1a1a;font-size:9px;font-weight:700;padding:3px 8px;border-radius:2px;}
+.pcard-body{padding:10px 12px;}
+.pcard-name{font-size:12px;font-weight:700;margin-bottom:3px;}
+.pcard-fabric{font-size:11px;color:#999;margin-bottom:6px;}
+.pcard-price{font-size:14px;color:#c9a84c;font-weight:700;margin-bottom:8px;}
+.pcard-btn{width:100%;padding:7px;background:#1a1a1a;color:#c9a84c;border:none;border-radius:3px;font-size:11px;font-weight:700;cursor:pointer;}
+.pcard-btn:hover{background:#c9a84c;color:#1a1a1a;}
+.detail-page{padding:20px;max-width:900px;margin:0 auto;}
+.back-btn{background:none;border:none;color:#c9a84c;font-size:13px;cursor:pointer;margin-bottom:16px;display:flex;align-items:center;gap:6px;font-weight:600;}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.detail-img-main{width:100%;height:400px;object-fit:cover;border-radius:8px;}
+.detail-tag{font-size:11px;color:#c9a84c;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.detail-name{font-size:22px;font-weight:700;margin-bottom:8px;}
+.detail-price{font-size:24px;color:#c9a84c;font-weight:700;margin-bottom:14px;}
+.detail-desc{font-size:13px;color:#666;line-height:1.7;margin-bottom:18px;}
+.size-label{font-size:12px;color:#999;margin-bottom:8px;font-weight:600;}
+.sizes{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
+.size-btn{width:38px;height:38px;border:1px solid #ddd;background:#fff;color:#555;border-radius:4px;cursor:pointer;font-size:12px;font-weight:600;}
+.size-btn.active,.size-btn:hover{border-color:#c9a84c;color:#c9a84c;}
+.qty-row{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.qty-label{font-size:12px;color:#999;font-weight:600;}
+.qty-btn{width:32px;height:32px;border:1px solid #ddd;background:#fff;border-radius:4px;cursor:pointer;font-size:16px;font-weight:700;}
+.qty-num{font-size:15px;font-weight:700;min-width:24px;text-align:center;}
+.add-cart-btn{width:100%;padding:13px;background:#c9a84c;color:#1a1a1a;border:none;border-radius:4px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:10px;}
+.add-cart-btn:hover{background:#e0bc5a;}
+.wa-btn{width:100%;padding:11px;background:#25D366;color:#fff;border:none;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;}
+.cart-page{max-width:650px;margin:0 auto;padding:20px;}
+.cart-title{font-size:18px;font-weight:700;margin-bottom:16px;}
+.cart-item{display:flex;gap:12px;background:#fff;border-radius:8px;padding:12px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,0.06);}
+.cart-item img{width:70px;height:70px;object-fit:cover;border-radius:4px;}
+.ci-info{flex:1;}
+.ci-name{font-size:13px;font-weight:700;margin-bottom:2px;}
+.ci-meta{font-size:11px;color:#999;margin-bottom:4px;}
+.ci-price{font-size:14px;color:#c9a84c;font-weight:700;}
+.ci-remove{background:none;border:none;color:#ccc;font-size:18px;cursor:pointer;}
+.ci-remove:hover{color:#e74c3c;}
+.cart-summary{background:#fff;border-radius:8px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,0.06);}
+.sum-row{display:flex;justify-content:space-between;font-size:13px;color:#666;margin-bottom:6px;}
+.sum-total{display:flex;justify-content:space-between;font-size:17px;font-weight:700;padding-top:10px;margin-top:6px;border-top:1px solid #eee;}
+.checkout-btn{width:100%;padding:13px;background:#c9a84c;color:#1a1a1a;border:none;border-radius:4px;font-size:14px;font-weight:700;cursor:pointer;margin-top:14px;}
+.empty-cart{text-align:center;padding:50px 20px;}
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:500;display:none;align-items:center;justify-content:center;padding:16px;}
+.modal-overlay.show{display:flex;}
+.modal{background:#fff;border-radius:12px;padding:24px;max-width:400px;width:100%;max-height:90vh;overflow-y:auto;}
+.modal-title{font-size:17px;font-weight:700;margin-bottom:4px;}
+.modal-sub{font-size:12px;color:#999;margin-bottom:16px;}
+.order-summary{background:#f9f9f9;border-radius:8px;padding:12px;margin-bottom:16px;}
+.os-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;}
+.os-total{display:flex;justify-content:space-between;font-size:14px;font-weight:700;color:#c9a84c;margin-top:8px;padding-top:8px;border-top:1px solid #eee;}
+.pay-methods{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:16px;}
+.pay-method{border:2px solid #eee;border-radius:8px;padding:12px 6px;text-align:center;cursor:pointer;}
+.pay-method.selected{border-color:#c9a84c;background:#fff9ee;}
+.pay-icon{font-size:20px;margin-bottom:3px;}
+.pay-name{font-size:11px;font-weight:700;}
+.pay-num{font-size:10px;color:#999;margin-top:2px;}
+.pay-detail{background:#fff9ee;border:1px solid #c9a84c;border-radius:8px;padding:12px;margin-bottom:14px;display:none;}
+.pay-detail.show{display:block;}
+.pay-detail p{font-size:12px;color:#555;margin-bottom:4px;}
+.acc-num{font-size:17px;font-weight:700;color:#c9a84c;letter-spacing:2px;margin:6px 0;}
+.form-group{margin-bottom:12px;}
+.form-label{font-size:11px;font-weight:700;color:#555;margin-bottom:4px;display:block;}
+.form-input{width:100%;padding:9px;border:1px solid #ddd;border-radius:4px;font-size:13px;}
+.modal-btns{display:flex;gap:8px;}
+.confirm-btn{flex:1;padding:11px;background:#c9a84c;color:#1a1a1a;border:none;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;}
+.cancel-btn{padding:11px 16px;background:#f5f5f5;color:#555;border:none;border-radius:4px;font-size:13px;cursor:pointer;}
+.success-modal{text-align:center;padding:10px 0;}
+.success-icon{font-size:48px;margin-bottom:10px;}
+.success-title{font-size:18px;font-weight:700;margin-bottom:8px;color:#27ae60;}
+.success-msg{font-size:13px;color:#666;line-height:1.6;margin-bottom:20px;}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#c9a84c;padding:10px 20px;border-radius:4px;font-size:12px;font-weight:700;display:none;z-index:999;white-space:nowrap;}
+.wa-float{position:fixed;bottom:24px;right:24px;background:#25D366;color:#fff;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;text-decoration:none;z-index:300;box-shadow:0 4px 12px rgba(37,211,102,0.4);}
+footer{background:#1a1a1a;padding:28px 24px;margin-top:30px;}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;margin-bottom:18px;}
+.footer-logo{color:#c9a84c;font-size:17px;font-weight:700;letter-spacing:3px;margin-bottom:6px;}
+.footer-desc{color:#666;font-size:11px;line-height:1.6;}
+.footer-heading{color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.footer-links a{display:block;color:#666;text-decoration:none;font-size:11px;margin-bottom:5px;cursor:pointer;}
+.footer-links a:hover{color:#c9a84c;}
+.footer-bottom{border-top:1px solid #2a2a2a;padding-top:14px;text-align:center;color:#444;font-size:11px;}
+@media(max-width:600px){.detail-grid{grid-template-columns:1fr;}.products{grid-template-columns:repeat(2,1fr);}.hero h1{font-size:22px;}.detail-img-main{height:280px;}.nav-links{display:none;}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><p>🚚 Free Delivery All Over Pakistan &nbsp;|&nbsp; WhatsApp: 03221022052 &nbsp;|&nbsp; EasyPaisa/JazzCash: 03132436992</p></div>
+
+<nav>
+  <div class="logo">FAZII BRAND</div>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+    <button class="cart-btn" onclick="showPage('cart')">🛒 Cart <span class="cart-count" id="cartCount">0</span></button>
+  </div>
+</nav>
+
+<div class="cat-nav">
+  <a class="active" onclick="showPage('home')" id="cat-home">🏠 Home</a>
+  <a onclick="showCategory('lady')" id="cat-lady">👗 Lady Suits</a>
+  <a onclick="showCategory('shalwar')" id="cat-shalwar">👘 Shalwar Kameez</a>
+  <a onclick="showCategory('trak')" id="cat-trak">🏃 Trak Suits</a>
+  <a onclick="showCategory('jeans')" id="cat-jeans">👔 Jeans Suits</a>
+  <a onclick="showCategory('kurta')" id="cat-kurta">👕 Casual Kurta</a>
+</div>
+
+<!-- HOME PAGE -->
+<div id="homePage" class="page active">
+  <div class="hero">
+    <div class="hero-tag">Premium Fashion — Faisalabad</div>
+    <h1>Welcome to <span>FAZII BRAND</span></h1>
+    <p>Premium quality suits — delivered all over Pakistan</p>
+    <div class="hero-cats">
+      <button class="hero-cat-btn" onclick="showCategory('lady')">👗 Lady Suits</button>
+      <button class="hero-cat-btn" onclick="showCategory('shalwar')">👘 Shalwar Kameez</button>
+      <button class="hero-cat-btn" onclick="showCategory('trak')">🏃 Trak Suits</button>
+      <button class="hero-cat-btn" onclick="showCategory('jeans')">👔 Jeans Suits</button>
+      <button class="hero-cat-btn" onclick="showCategory('kurta')">👕 Casual Kurta</button>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-title">Lady <span>Suits</span></div><a class="see-all" onclick="showCategory('lady')">Sab Dekhein →</a></div>
+    <div class="products" id="homeProdsLady"></div>
+  </div>
+  <div class="section" style="background:#fff;">
+    <div class="section-header"><div class="section-title">Shalwar <span>Kameez</span></div><a class="see-all" onclick="showCategory('shalwar')">Sab Dekhein →</a></div>
+    <div class="products" id="homeProdsSK"></div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-title">Trak <span>Suits</span></div><a class="see-all" onclick="showCategory('trak')">Sab Dekhein →</a></div>
+    <div class="products" id="homeProdsTrak"></div>
+  </div>
+  <div class="section" style="background:#fff;">
+    <div class="section-header"><div class="section-title">Jeans <span>Suits</span></div><a class="see-all" onclick="showCategory('jeans')">Sab Dekhein →</a></div>
+    <div class="products" id="homeProdsJeans"></div>
+  </div>
+  <div class="section">
+    <div class="section-header"><div class="section-title">Casual <span>Kurta</span></div><a class="see-all" onclick="showCategory('kurta')">Sab Dekhein →</a></div>
+    <div class="products" id="homeProdsKurta"></div>
+  </div>
+</div>
+
+<!-- CATEGORY PAGE -->
+<div id="categoryPage" class="page">
+  <div class="section">
+    <div class="section-header"><div class="section-title" id="catTitle"></div></div>
+    <div class="products" id="catProducts"></div>
+  </div>
+</div>
+
+<!-- DETAIL PAGE -->
+<div id="detailPage" class="page">
+  <div class="detail-page">
+    <button class="back-btn" onclick="goBack()">← Wapas Jao</button>
+    <div class="detail-grid">
+      <div><img class="detail-img-main" id="detailImg" src="" alt=""></div>
+      <div>
+        <div class="detail-tag" id="detailCat"></div>
+        <div class="detail-name" id="detailName"></div>
+        <div class="detail-price" id="detailPrice"></div>
+        <div class="detail-desc" id="detailDesc"></div>
+        <div class="size-label">Size chunein:</div>
+        <div class="sizes">
+          <button class="size-btn" onclick="selSize(this)">XS</button>
+          <button class="size-btn" onclick="selSize(this)">S</button>
+          <button class="size-btn active" onclick="selSize(this)">M</button>
+          <button class="size-btn" onclick="selSize(this)">L</button>
+          <button class="size-btn" onclick="selSize(this)">XL</button>
+          <button class="size-btn" onclick="selSize(this)">XXL</button>
+        </div>
+        <div class="qty-row">
+          <span class="qty-label">Quantity:</span>
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
+          <span class="qty-num" id="qtyNum">1</span>
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+        <button class="add-cart-btn" onclick="addToCart()">🛒 Add to Cart</button>
+        <button class="wa-btn" onclick="waOrder()">💬 WhatsApp pe Order Karein</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CART PAGE -->
+<div id="cartPage" class="page">
+  <div class="cart-page">
+    <button class="back-btn" onclick="showPage('home')">← Shopping Jaari Rakhein</button>
+    <div class="cart-title">🛒 Aapki Cart</div>
+    <div id="cartItems"></div>
+    <div id="cartSummary"></div>
+  </div>
+</div>
+
+<!-- PAYMENT MODAL -->
+<div class="modal-overlay" id="payModal">
+  <div class="modal">
+    <div id="payStep1">
+      <div class="modal-title">Order Complete Karein</div>
+      <div class="modal-sub">Payment method chunein</div>
+      <div class="order-summary" id="orderSummary"></div>
+      <div class="pay-methods">
+        <div class="pay-method" onclick="selPayment('easypaisa')" id="pm-easypaisa"><div class="pay-icon">💚</div><div class="pay-name">EasyPaisa</div><div class="pay-num">03132436992</div></div>
+        <div class="pay-method" onclick="selPayment('jazzcash')" id="pm-jazzcash"><div class="pay-icon">🔴</div><div class="pay-name">JazzCash</div><div class="pay-num">03132436992</div></div>
+        <div class="pay-method" onclick="selPayment('bank')" id="pm-bank"><div class="pay-icon">🏦</div><div class="pay-name">Bank</div><div class="pay-num">Transfer</div></div>
+      </div>
+      <div class="pay-detail" id="payDetail"></div>
+      <div class="form-group"><label class="form-label">Aapka Naam *</label><input class="form-input" id="custName" placeholder="Full name"></div>
+      <div class="form-group"><label class="form-label">Phone Number *</label><input class="form-input" id="custPhone" placeholder="03XX-XXXXXXX"></div>
+      <div class="form-group"><label class="form-label">Delivery Address *</label><input class="form-input" id="custAddr" placeholder="Poora address"></div>
+      <div class="form-group"><label class="form-label">Transaction ID *</label><input class="form-input" id="txnId" placeholder="Payment transaction ID"></div>
+      <div class="modal-btns">
+        <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+        <button class="confirm-btn" onclick="confirmOrder()">Confirm Order ✓</button>
+      </div>
+    </div>
+    <div id="payStep2" style="display:none;">
+      <div class="success-modal">
+        <div class="success-icon">🎉</div>
+        <div class="success-title">Order Ho Gaya!</div>
+        <div class="success-msg" id="successMsg"></div>
+        <button class="confirm-btn" onclick="closeModal();showPage('home')">Wapas Shopping Karein</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<a class="wa-float" href="https://wa.me/923221022052?text=Assalam%20o%20Alaikum!%20Fazii%20Brand%20se%20order%20karna%20hai" target="_blank">💬</a>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo">FAZII BRAND</div><div class="footer-desc">Premium quality suits at best prices. Free delivery all over Pakistan.</div></div>
+    <div><div class="footer-heading">Categories</div><div class="footer-links">
+      <a onclick="showCategory('lady')">👗 Lady Suits</a>
+      <a onclick="showCategory('shalwar')">👘 Shalwar Kameez</a>
+      <a onclick="showCategory('trak')">🏃 Trak Suits</a>
+      <a onclick="showCategory('jeans')">👔 Jeans Suits</a>
+      <a onclick="showCategory('kurta')">👕 Casual Kurta</a>
+    </div></div>
+    <div><div class="footer-heading">Payment</div><div class="footer-links">
+      <a>💚 EasyPaisa: 03132436992</a>
+      <a>🔴 JazzCash: 03132436992</a>
+      <a>🏦 Bank Transfer</a>
+    </div></div>
+    <div><div class="footer-heading">Links</div><div class="footer-links">
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms & Conditions</a>
+    </div></div>
+    <div><div class="footer-heading">Contact</div><div class="footer-links">
+      <a href="https://wa.me/923221022052">💬 03221022052</a>
+      <a href="mailto:mainfaizan150@gmail.com">📧 mainfaizan150@gmail.com</a>
+      <a>📍 Faisalabad, Pakistan</a>
+      <a>🕐 9am – 9pm Daily</a>
+    </div></div>
+  </div>
+  <div class="footer-bottom">© 2025 Fazii Brand — All Rights Reserved | <a href="privacy.html" style="color:#666;">Privacy</a> | <a href="terms.html" style="color:#666;">Terms</a></div>
+</footer>
+
+<script>
+const WA='923221022052';
+const products=[
+  {id:1,cat:'lady',catName:'Lady Suits',name:'White Embroidered Suit',fabric:'Cotton Blend • Dupatta',price:2500,img:'ls1.jpg',desc:'Elegant white suit with beautiful embroidery. Perfect for formal occasions.'},
+  {id:2,cat:'lady',catName:'Lady Suits',name:'Green Classic Suit',fabric:'Lawn Cotton • Casual',price:2800,img:'ls2.jpg',desc:'Stylish green suit perfect for everyday wear.'},
+  {id:3,cat:'lady',catName:'Lady Suits',name:'Peach Formal Suit',fabric:'Chiffon • With Dupatta',price:3000,img:'ls3.jpg',desc:'Beautiful peach colored formal suit. Great for weddings and parties.'},
+  {id:4,cat:'lady',catName:'Lady Suits',name:'Peach Premium Suit',fabric:'Silk Cotton • Embroidered',price:3200,img:'ls4.jpg',desc:'Premium peach suit with fine embroidery and matching dupatta.'},
+  {id:5,cat:'lady',catName:'Lady Suits',name:'Navy Blue Print Suit',fabric:'Lawn • Block Print',price:2500,img:'ls5.jpg',desc:'Trendy navy blue block print suit.'},
+  {id:6,cat:'lady',catName:'Lady Suits',name:'Pink Silk Suit',fabric:'Silk Blend • Party Wear',price:3500,img:'ls6.jpg',desc:'Gorgeous pink silk suit. Perfect for weddings.'},
+  {id:7,cat:'lady',catName:'Lady Suits',name:'Mint Green Suit',fabric:'Cotton • Gold Work',price:2800,img:'ls7.jpg',desc:'Fresh mint green suit with gold embroidery.'},
+  {id:8,cat:'lady',catName:'Lady Suits',name:'White Printed Suit',fabric:'Lawn Cotton • Daily',price:2500,img:'ls8.jpg',desc:'Trendy white printed suit for daily wear.'},
+  {id:9,cat:'lady',catName:'Lady Suits',name:'Green Patiala Suit',fabric:'Cotton Silk • Dupatta',price:3000,img:'ls9.jpg',desc:'Beautiful green patiala suit with matching dupatta.'},
+  {id:10,cat:'lady',catName:'Lady Suits',name:'Maroon Patiala',fabric:'Georgette • Embroidered',price:3200,img:'ls10.jpg',desc:'Stunning maroon suit with embroidery.'},
+  {id:11,cat:'lady',catName:'Lady Suits',name:'Purple Party Suit',fabric:'Velvet • Zari Work',price:3200,img:'ls11.jpg',desc:'Gorgeous purple suit with zari embroidery.'},
+  {id:12,cat:'lady',catName:'Lady Suits',name:'Purple Patiala',fabric:'Georgette • Embroidered',price:3000,img:'ls12.jpg',desc:'Classic purple patiala suit.'},
+  {id:13,cat:'lady',catName:'Lady Suits',name:'Red Patiala Suit',fabric:'Silk • Traditional',price:2800,img:'ls13.jpg',desc:'Traditional red patiala suit.'},
+  {id:14,cat:'lady',catName:'Lady Suits',name:'Red Designer Suit',fabric:'Georgette • Heavy Work',price:3500,img:'ls14.jpg',desc:'Designer red suit with heavy embroidery.'},
+  {id:15,cat:'lady',catName:'Lady Suits',name:'Red Casual Suit',fabric:'Cotton • Casual',price:2500,img:'ls15.jpg',desc:'Stylish red casual suit.'},
+  {id:16,cat:'lady',catName:'Lady Suits',name:'Purple Formal',fabric:'Georgette • Party',price:3200,img:'ls16.jpg',desc:'Elegant purple formal suit.'},
+  {id:17,cat:'lady',catName:'Lady Suits',name:'Red Bridal Suit',fabric:'Silk • Bridal',price:3500,img:'ls17.jpg',desc:'Stunning red bridal suit.'},
+  {id:18,cat:'lady',catName:'Lady Suits',name:'Magenta Mirror Suit',fabric:'Georgette • Mirror Work',price:3200,img:'ls18.jpg',desc:'Beautiful magenta suit with mirror embroidery.'},
+  // SHALWAR KAMEEZ
+  {id:19,cat:'shalwar',catName:'Shalwar Kameez',name:'Dark Green Kameez',fabric:'Khaddar • Classic',price:2500,img:'sk1.jpg',desc:'Classic dark green kameez shalwar.'},
+  {id:20,cat:'shalwar',catName:'Shalwar Kameez',name:'Beige Luxury Kameez',fabric:'Silk Blend • Formal',price:3000,img:'sk2.jpg',desc:'Luxury beige kameez for formal events.'},
+  {id:21,cat:'shalwar',catName:'Shalwar Kameez',name:'Camel Brown Suit',fabric:'Cotton Khaddar',price:2500,img:'sk3.jpg',desc:'Classic camel brown shalwar kameez.'},
+  {id:22,cat:'shalwar',catName:'Shalwar Kameez',name:'Brown Classic Suit',fabric:'Cotton • Traditional',price:2500,img:'sk4.jpg',desc:'Traditional brown shalwar kameez.'},
+  {id:23,cat:'shalwar',catName:'Shalwar Kameez',name:'Light Grey Suit',fabric:'Cotton Blend • Smart',price:2800,img:'sk5.jpg',desc:'Smart light grey suit for office.'},
+  {id:24,cat:'shalwar',catName:'Shalwar Kameez',name:'Off White Formal',fabric:'Lawn • Elegant',price:2800,img:'sk6.jpg',desc:'Elegant off white shalwar kameez.'},
+  {id:25,cat:'shalwar',catName:'Shalwar Kameez',name:'Black Classic Suit',fabric:'Khaddar • Premium',price:3000,img:'sk7.jpg',desc:'Premium black shalwar kameez.'},
+  {id:26,cat:'shalwar',catName:'Shalwar Kameez',name:'Olive Green Kameez',fabric:'Cotton • Casual',price:2500,img:'sk8.jpg',desc:'Stylish olive green kameez.'},
+  {id:27,cat:'shalwar',catName:'Shalwar Kameez',name:'Dark Teal Suit',fabric:'Khaddar • Smart Fit',price:2800,img:'sk9.jpg',desc:'Dark teal shalwar kameez.'},
+  {id:28,cat:'shalwar',catName:'Shalwar Kameez',name:'Navy Blue Suit',fabric:'Cotton Blend • Classic',price:2800,img:'sk10.jpg',desc:'Classic navy blue shalwar kameez.'},
+  {id:29,cat:'shalwar',catName:'Shalwar Kameez',name:'Khaki Formal',fabric:'Cotton • Formal',price:2500,img:'sk11.jpg',desc:'Formal khaki suit for office.'},
+  {id:30,cat:'shalwar',catName:'Shalwar Kameez',name:'Black Stylish Kameez',fabric:'Georgette • Party',price:3000,img:'sk12.jpg',desc:'Stylish black kameez for parties.'},
+  {id:31,cat:'shalwar',catName:'Shalwar Kameez',name:'Maroon Classic',fabric:'Khaddar • Traditional',price:2800,img:'sk13.jpg',desc:'Traditional maroon shalwar kameez.'},
+  // TRAK SUITS
+  {id:32,cat:'trak',catName:'Trak Suits',name:'Beige Sports Suit',fabric:'Polyester • Casual',price:2500,img:'ts1.jpg',desc:'Comfortable beige trak suit.'},
+  {id:33,cat:'trak',catName:'Trak Suits',name:'Navy Trak Suit',fabric:'Cotton Blend • Sports',price:2800,img:'ts2.jpg',desc:'Stylish navy blue trak suit.'},
+  {id:34,cat:'trak',catName:'Trak Suits',name:'Grey Cargo Suit',fabric:'Cotton • Casual',price:2800,img:'ts3.jpg',desc:'Trendy grey cargo style suit.'},
+  {id:35,cat:'trak',catName:'Trak Suits',name:'Olive Sports Suit',fabric:'Polyester • Sports',price:2500,img:'ts4.jpg',desc:'Olive green sports suit for gym.'},
+  {id:36,cat:'trak',catName:'Trak Suits',name:'Red Sweatsuit',fabric:'Fleece • Winter',price:2800,img:'ts5.jpg',desc:'Warm red sweatsuit for winter.'},
+  {id:37,cat:'trak',catName:'Trak Suits',name:'Brown Formal 3-Piece',fabric:'Wool Blend • Formal',price:3500,img:'ts6.jpg',desc:'Elegant 3-piece brown formal suit.'},
+  {id:38,cat:'trak',catName:'Trak Suits',name:'Navy 3-Piece Suit',fabric:'Wool Blend • Formal',price:3500,img:'ts7.jpg',desc:'Classic navy blue 3-piece suit.'},
+  {id:39,cat:'trak',catName:'Trak Suits',name:'Eid Collection',fabric:'Mixed • Family',price:2500,img:'ts8.jpg',desc:'Special Eid collection trak suits.'},
+  // JEANS SUITS
+  {id:40,cat:'jeans',catName:'Jeans Suits',name:'Dark Green Jeans Suit',fabric:'Denim Blend • Casual',price:2800,img:'sk1.jpg',desc:'Stylish dark green jeans suit for casual wear.'},
+  {id:41,cat:'jeans',catName:'Jeans Suits',name:'Navy Jeans Suit',fabric:'Denim • Smart Casual',price:2800,img:'sk5.jpg',desc:'Trendy navy jeans suit.'},
+  {id:42,cat:'jeans',catName:'Jeans Suits',name:'Black Jeans Suit',fabric:'Denim • Modern',price:3000,img:'sk7.jpg',desc:'Stylish black jeans suit for parties.'},
+  {id:43,cat:'jeans',catName:'Jeans Suits',name:'Grey Jeans Suit',fabric:'Denim Blend • Casual',price:2800,img:'ts3.jpg',desc:'Comfortable grey jeans suit.'},
+  // CASUAL KURTA
+  {id:44,cat:'kurta',catName:'Casual Kurta',name:'Magenta Mirror Kurta',fabric:'Georgette • Mirror Work',price:3200,img:'ls18.jpg',desc:'Beautiful magenta kurta with mirror embroidery.'},
+  {id:45,cat:'kurta',catName:'Casual Kurta',name:'Red Casual Kurta',fabric:'Cotton • Daily Wear',price:2500,img:'ls15.jpg',desc:'Stylish red casual kurta.'},
+  {id:46,cat:'kurta',catName:'Casual Kurta',name:'White Printed Kurta',fabric:'Lawn • Printed',price:2500,img:'ls8.jpg',desc:'Trendy white printed kurta for daily wear.'},
+];
+
+let cart=[],currentProduct=null,selectedSize='M',currentQty=1,currentCat='',selectedPayment='';
+
+function renderProducts(list,cid,limit){
+  const c=document.getElementById(cid);
+  if(!c)return;
+  const l=limit?list.slice(0,limit):list;
+  if(!l.length){c.innerHTML='<p style="color:#999;padding:20px;">Koi product nahi</p>';return;}
+  c.innerHTML=l.map(p=>`
+    <div class="pcard" onclick="showDetail(${p.id})">
+      <div class="pcard-img">
+        <img src="${p.img}" alt="${p.name}" onerror="this.src='https://placehold.co/300x210/f0f0f0/999?text=Fazii+Brand'">
+        <span class="pcard-badge">NEW</span>
+      </div>
+      <div class="pcard-body">
+        <div class="pcard-name">${p.name}</div>
+        <div class="pcard-fabric">${p.fabric}</div>
+        <div class="pcard-price">Rs. ${p.price.toLocaleString()}</div>
+        <button class="pcard-btn">Detail Dekhein →</button>
+      </div>
+    </div>`).join('');
+}
+
+function showDetail(id){
+  currentProduct=products.find(p=>p.id===id);
+  if(!currentProduct)return;
+  document.getElementById('detailImg').src=currentProduct.img;
+  document.getElementById('detailImg').onerror=function(){this.src='https://placehold.co/400x400/f0f0f0/999?text=Fazii+Brand';};
+  document.getElementById('detailCat').textContent=currentProduct.catName;
+  document.getElementById('detailName').textContent=currentProduct.name;
+  document.getElementById('detailPrice').textContent='Rs. '+currentProduct.price.toLocaleString();
+  document.getElementById('detailDesc').textContent=currentProduct.desc;
+  selectedSize='M';currentQty=1;
+  document.getElementById('qtyNum').textContent='1';
+  document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.size-btn')[2].classList.add('active');
+  showPage('detail');
+}
+
+function showCategory(cat){
+  currentCat=cat;
+  const names={lady:'Lady <span>Suits</span>',shalwar:'Shalwar <span>Kameez</span>',trak:'Trak <span>Suits</span>',jeans:'Jeans <span>Suits</span>',kurta:'Casual <span>Kurta</span>'};
+  document.getElementById('catTitle').innerHTML=names[cat]||cat;
+  renderProducts(products.filter(p=>p.cat===cat),'catProducts');
+  document.querySelectorAll('.cat-nav a').forEach(a=>a.classList.remove('active'));
+  const el=document.getElementById('cat-'+cat);
+  if(el)el.classList.add('active');
+  showPage('category');
+}
+
+function selSize(btn){document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');selectedSize=btn.textContent;}
+function changeQty(d){currentQty=Math.max(1,currentQty+d);document.getElementById('qtyNum').textContent=currentQty;}
+
+function addToCart(){
+  if(!currentProduct)return;
+  const ex=cart.find(i=>i.id===currentProduct.id&&i.size===selectedSize);
+  if(ex)ex.qty+=currentQty;
+  else cart.push({...currentProduct,size:selectedSize,qty:currentQty});
+  updateCartCount();
+  showToast('✅ '+currentProduct.name+' cart mein add ho gaya!');
+}
+
+function removeFromCart(id,size){cart=cart.filter(i=>!(i.id===id&&i.size===size));updateCartCount();renderCart();}
+function updateCartCount(){document.getElementById('cartCount').textContent=cart.reduce((s,i)=>s+i.qty,0);}
+
+function renderCart(){
+  const ci=document.getElementById('cartItems'),cs=document.getElementById('cartSummary');
+  if(!cart.length){
+    ci.innerHTML='<div class="empty-cart"><p style="color:#999;font-size:15px;margin-bottom:16px;">🛒 Cart khali hai!</p><button class="add-cart-btn" style="max-width:180px;margin:0 auto;display:block;" onclick="showPage(\'home\')">Shopping Karein</button></div>';
+    cs.innerHTML='';return;
+  }
+  ci.innerHTML=cart.map(i=>`
+    <div class="cart-item">
+      <img src="${i.img}" onerror="this.src='https://placehold.co/70x70/f0f0f0/999?text=FB'" alt="">
+      <div class="ci-info">
+        <div class="ci-name">${i.name}</div>
+        <div class="ci-meta">Size: ${i.size} • Qty: ${i.qty}</div>
+        <div class="ci-price">Rs. ${(i.price*i.qty).toLocaleString()}</div>
+      </div>
+      <button class="ci-remove" onclick="removeFromCart(${i.id},'${i.size}')">✕</button>
+    </div>`).join('');
+  const sub=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  cs.innerHTML=`<div class="cart-summary">
+    <div class="sum-row"><span>Subtotal</span><span>Rs. ${sub.toLocaleString()}</span></div>
+    <div class="sum-row"><span>Delivery</span><span style="color:#27ae60;font-weight:700;">Free ✓</span></div>
+    <div class="sum-total"><span>Total</span><span style="color:#c9a84c;">Rs. ${sub.toLocaleString()}</span></div>
+    <button class="checkout-btn" onclick="openPayModal()">💳 Order Complete Karein</button>
+  </div>`;
+}
+
+function openPayModal(){
+  if(!cart.length){showToast('Cart khali hai!');return;}
+  const sub=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  document.getElementById('orderSummary').innerHTML=
+    cart.map(i=>`<div class="os-row"><span>${i.name} (${i.size}) x${i.qty}</span><span>Rs. ${(i.price*i.qty).toLocaleString()}</span></div>`).join('')+
+    `<div class="os-total"><span>Total</span><span>Rs. ${sub.toLocaleString()}</span></div>`;
+  selectedPayment='';
+  document.querySelectorAll('.pay-method').forEach(m=>m.classList.remove('selected'));
+  document.getElementById('payDetail').classList.remove('show');
+  document.getElementById('payStep1').style.display='block';
+  document.getElementById('payStep2').style.display='none';
+  ['custName','custPhone','custAddr','txnId'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('payModal').classList.add('show');
+}
+
+function selPayment(m){
+  selectedPayment=m;
+  document.querySelectorAll('.pay-method').forEach(x=>x.classList.remove('selected'));
+  document.getElementById('pm-'+m).classList.add('selected');
+  const d=document.getElementById('payDetail');
+  d.classList.add('show');
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  if(m==='easypaisa')d.innerHTML=`<p>EasyPaisa pe send karein:</p><div class="acc-num">03132436992</div><p>Amount: <strong>Rs. ${total.toLocaleString()}</strong></p><p style="color:#e74c3c;font-size:11px;">⚠️ Transaction ID zaroor likho!</p>`;
+  else if(m==='jazzcash')d.innerHTML=`<p>JazzCash pe send karein:</p><div class="acc-num">03132436992</div><p>Amount: <strong>Rs. ${total.toLocaleString()}</strong></p><p style="color:#e74c3c;font-size:11px;">⚠️ Transaction ID zaroor likho!</p>`;
+  else d.innerHTML=`<p><strong>Bank:</strong> Meezan Bank</p><p><strong>Account:</strong> Fazii Brand</p><p style="color:#e74c3c;font-size:11px;">⚠️ Transaction ID zaroor likho!</p>`;
+}
+
+function confirmOrder(){
+  const name=document.getElementById('custName').value.trim();
+  const phone=document.getElementById('custPhone').value.trim();
+  const addr=document.getElementById('custAddr').value.trim();
+  const txn=document.getElementById('txnId').value.trim();
+  if(!name||!phone||!addr){showToast('⚠️ Sab fields fill karein!');return;}
+  if(!selectedPayment){showToast('⚠️ Payment method chunein!');return;}
+  if(!txn){showToast('⚠️ Transaction ID zaroori hai!');return;}
+  const items=cart.map(i=>`${i.name}(${i.size})x${i.qty}`).join(', ');
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const msg=`🛒 New Order!\n\nNaam: ${name}\nPhone: ${phone}\nAddress: ${addr}\nItems: ${items}\nTotal: Rs.${total}\nPayment: ${selectedPayment.toUpperCase()}\nTxn ID: ${txn}`;
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank');
+  document.getElementById('successMsg').innerHTML=`Shukriya ${name}! 🎉<br><br>Order receive ho gaya.<br>Hum <strong>03221022052</strong> pe jald contact karenge.<br><br>📦 Delivery: 3-5 working days`;
+  document.getElementById('payStep1').style.display='none';
+  document.getElementById('payStep2').style.display='block';
+  cart=[];updateCartCount();
+}
+
+function closeModal(){document.getElementById('payModal').classList.remove('show');}
+function waOrder(){
+  if(!currentProduct)return;
+  const msg=`Assalam o Alaikum! Mujhe ${currentProduct.name} chahiye (Size: ${selectedSize}) - Rs.${currentProduct.price}`;
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank');
+}
+function goBack(){if(currentCat)showCategory(currentCat);else showPage('home');}
+
+function showPage(p){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.cat-nav a').forEach(a=>a.classList.remove('active'));
+  if(p==='home'){
+    document.getElementById('homePage').classList.add('active');
+    document.getElementById('cat-home').classList.add('active');
+    renderProducts(products.filter(x=>x.cat==='lady'),'homeProdsLady',4);
+    renderProducts(products.filter(x=>x.cat==='shalwar'),'homeProdsSK',4);
+    renderProducts(products.filter(x=>x.cat==='trak'),'homeProdsTrak',4);
+    renderProducts(products.filter(x=>x.cat==='jeans'),'homeProdsJeans',4);
+    renderProducts(products.filter(x=>x.cat==='kurta'),'homeProdsKurta',3);
+  }else if(p==='category')document.getElementById('categoryPage').classList.add('active');
+  else if(p==='detail')document.getElementById('detailPage').classList.add('active');
+  else if(p==='cart'){document.getElementById('cartPage').classList.add('active');renderCart();}
+  window.scrollTo(0,0);
+}
+
+document.getElementById('payModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+showPage('home');
+</script>
+</body>
+</html>
