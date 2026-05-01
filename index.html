@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>  <link rel="icon" type="image/png" href="logo.png">
+<head>
+  <link rel="icon" type="image/png" href="logo.png">
   <link rel="apple-touch-icon" href="logo.png">
-  
-  <!-- Social media preview ke liye (OG tags) -->
-  <meta property="og:image" content="https://aapki-website.com/logo.png">
+  <meta property="og:image" content="logo.png">
   <meta property="og:title" content="FAZII BRAND">
   <meta property="og:description" content="FAZII FASHION BLOG — Style, Suits & More">
 <meta charset="UTF-8">
@@ -16,7 +15,9 @@ body{font-family:Arial,sans-serif;background:#f8f8f8;color:#1a1a1a;}
 .topbar{background:#c9a84c;padding:7px 0;text-align:center;}
 .topbar p{font-size:12px;color:#1a1a1a;font-weight:700;}
 nav{background:#1a1a1a;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:200;}
-.logo{color:#c9a84c;font-size:22px;font-weight:700;letter-spacing:3px;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo img{height:50px;width:50px;border-radius:50%;object-fit:cover;border:2px solid #c9a84c;}
+.logo-text{color:#c9a84c;font-size:22px;font-weight:700;letter-spacing:3px;}
 .nav-right{display:flex;align-items:center;gap:16px;}
 .nav-links a{color:#ccc;text-decoration:none;font-size:12px;margin-left:16px;}
 .nav-links a:hover{color:#c9a84c;}
@@ -132,7 +133,11 @@ footer{background:#1a1a1a;padding:28px 24px;margin-top:30px;}
 <div class="topbar"><p>🚚 Free Delivery All Over Pakistan &nbsp;|&nbsp; WhatsApp: 03221022052 &nbsp;|&nbsp; EasyPaisa/JazzCash: 03132436992</p></div>
 
 <nav>
-  <div class="logo">FAZII BRAND</div>
+  <!-- ✅ LOGO IMAGE NAV MEIN -->
+  <a class="logo" href="#">
+    <img src="logo.png" alt="Fazii Brand Logo" onerror="this.style.display='none'">
+    <span class="logo-text">FAZII BRAND</span>
+  </a>
   <div class="nav-right">
     <div class="nav-links">
       <a href="about.html">About</a>
@@ -254,7 +259,7 @@ footer{background:#1a1a1a;padding:28px 24px;margin-top:30px;}
       </div>
       <div class="pay-detail" id="payDetail"></div>
       <div class="form-group"><label class="form-label">Aapka Naam *</label><input class="form-input" id="custName" placeholder="Full name"></div>
-      <div class="form-group"><label class="form-label">Phone Number *</label><input class="form-input" id="custPhone" placeholder="03XX-XXXXXXX"></div>
+      <div class="form-group"><label class="form-label">Phone Number *</label><input class="form-input" id="custPhone" placeholder="03067117890"></div>
       <div class="form-group"><label class="form-label">Delivery Address *</label><input class="form-input" id="custAddr" placeholder="Poora address"></div>
       <div class="form-group"><label class="form-label">Transaction ID *</label><input class="form-input" id="txnId" placeholder="Payment transaction ID"></div>
       <div class="modal-btns">
@@ -274,7 +279,7 @@ footer{background:#1a1a1a;padding:28px 24px;margin-top:30px;}
 </div>
 
 <div class="toast" id="toast"></div>
-<a class="wa-float" href="https://wa.me/923221022052?text=Assalam%20o%20Alaikum!%20Fazii%20Brand%20se%20order%20karna%20hai" target="_blank">💬</a>
+<a class="wa-float" href="https://wa.me/923067117890?text=Assalam%20o%20Alaikum!%20Fazii%20Brand%20se%20order%20karna%20hai" target="_blank">💬</a>
 
 <footer>
   <div class="footer-grid">
@@ -298,13 +303,13 @@ footer{background:#1a1a1a;padding:28px 24px;margin-top:30px;}
       <a href="terms.html">Terms & Conditions</a>
     </div></div>
     <div><div class="footer-heading">Contact</div><div class="footer-links">
-      <a href="https://wa.me/923221022052">💬 03221022052</a>
+      <a href="https://wa.me/923067117890">💬 03067117890</a>
       <a href="mailto:mainfaizan150@gmail.com">📧 mainfaizan150@gmail.com</a>
-      <a>📍 Faisalabad, Pakistan</a>
+      <a>📍 Faisalabad,Punjab Pakistan</a>
       <a>🕐 9am – 9pm Daily</a>
     </div></div>
   </div>
-  <div class="footer-bottom">© 2025 Fazii Brand — All Rights Reserved | <a href="privacy.html" style="color:#666;">Privacy</a> | <a href="terms.html" style="color:#666;">Terms</a></div>
+  <div class="footer-bottom">© 2026 Fazii Brand — All Rights Reserved | <a href="privacy.html" style="color:#666;">Privacy</a> | <a href="terms.html" style="color:#666;">Terms</a></div>
 </footer>
 
 <script>
@@ -328,7 +333,6 @@ const products=[
   {id:16,cat:'lady',catName:'Lady Suits',name:'Purple Formal',fabric:'Georgette • Party',price:3200,img:'ls16.jpg',desc:'Elegant purple formal suit.'},
   {id:17,cat:'lady',catName:'Lady Suits',name:'Red Bridal Suit',fabric:'Silk • Bridal',price:3500,img:'ls17.jpg',desc:'Stunning red bridal suit.'},
   {id:18,cat:'lady',catName:'Lady Suits',name:'Magenta Mirror Suit',fabric:'Georgette • Mirror Work',price:3200,img:'ls18.jpg',desc:'Beautiful magenta suit with mirror embroidery.'},
-  // SHALWAR KAMEEZ
   {id:19,cat:'shalwar',catName:'Shalwar Kameez',name:'Dark Green Kameez',fabric:'Khaddar • Classic',price:2500,img:'sk1.jpg',desc:'Classic dark green kameez shalwar.'},
   {id:20,cat:'shalwar',catName:'Shalwar Kameez',name:'Beige Luxury Kameez',fabric:'Silk Blend • Formal',price:3000,img:'sk2.jpg',desc:'Luxury beige kameez for formal events.'},
   {id:21,cat:'shalwar',catName:'Shalwar Kameez',name:'Camel Brown Suit',fabric:'Cotton Khaddar',price:2500,img:'sk3.jpg',desc:'Classic camel brown shalwar kameez.'},
@@ -342,7 +346,6 @@ const products=[
   {id:29,cat:'shalwar',catName:'Shalwar Kameez',name:'Khaki Formal',fabric:'Cotton • Formal',price:2500,img:'sk11.jpg',desc:'Formal khaki suit for office.'},
   {id:30,cat:'shalwar',catName:'Shalwar Kameez',name:'Black Stylish Kameez',fabric:'Georgette • Party',price:3000,img:'sk12.jpg',desc:'Stylish black kameez for parties.'},
   {id:31,cat:'shalwar',catName:'Shalwar Kameez',name:'Maroon Classic',fabric:'Khaddar • Traditional',price:2800,img:'sk13.jpg',desc:'Traditional maroon shalwar kameez.'},
-  // TRAK SUITS
   {id:32,cat:'trak',catName:'Trak Suits',name:'Beige Sports Suit',fabric:'Polyester • Casual',price:2500,img:'ts1.jpg',desc:'Comfortable beige trak suit.'},
   {id:33,cat:'trak',catName:'Trak Suits',name:'Navy Trak Suit',fabric:'Cotton Blend • Sports',price:2800,img:'ts2.jpg',desc:'Stylish navy blue trak suit.'},
   {id:34,cat:'trak',catName:'Trak Suits',name:'Grey Cargo Suit',fabric:'Cotton • Casual',price:2800,img:'ts3.jpg',desc:'Trendy grey cargo style suit.'},
@@ -351,18 +354,18 @@ const products=[
   {id:37,cat:'trak',catName:'Trak Suits',name:'Brown Formal 3-Piece',fabric:'Wool Blend • Formal',price:3500,img:'ts6.jpg',desc:'Elegant 3-piece brown formal suit.'},
   {id:38,cat:'trak',catName:'Trak Suits',name:'Navy 3-Piece Suit',fabric:'Wool Blend • Formal',price:3500,img:'ts7.jpg',desc:'Classic navy blue 3-piece suit.'},
   {id:39,cat:'trak',catName:'Trak Suits',name:'Eid Collection',fabric:'Mixed • Family',price:2500,img:'ts8.jpg',desc:'Special Eid collection trak suits.'},
-  // JEANS SUITS
   {id:40,cat:'jeans',catName:'Jeans Suits',name:'Dark Green Jeans Suit',fabric:'Denim Blend • Casual',price:2800,img:'sk1.jpg',desc:'Stylish dark green jeans suit for casual wear.'},
   {id:41,cat:'jeans',catName:'Jeans Suits',name:'Navy Jeans Suit',fabric:'Denim • Smart Casual',price:2800,img:'sk5.jpg',desc:'Trendy navy jeans suit.'},
   {id:42,cat:'jeans',catName:'Jeans Suits',name:'Black Jeans Suit',fabric:'Denim • Modern',price:3000,img:'sk7.jpg',desc:'Stylish black jeans suit for parties.'},
   {id:43,cat:'jeans',catName:'Jeans Suits',name:'Grey Jeans Suit',fabric:'Denim Blend • Casual',price:2800,img:'ts3.jpg',desc:'Comfortable grey jeans suit.'},
-  // CASUAL KURTA
   {id:44,cat:'kurta',catName:'Casual Kurta',name:'Magenta Mirror Kurta',fabric:'Georgette • Mirror Work',price:3200,img:'ls18.jpg',desc:'Beautiful magenta kurta with mirror embroidery.'},
   {id:45,cat:'kurta',catName:'Casual Kurta',name:'Red Casual Kurta',fabric:'Cotton • Daily Wear',price:2500,img:'ls15.jpg',desc:'Stylish red casual kurta.'},
   {id:46,cat:'kurta',catName:'Casual Kurta',name:'White Printed Kurta',fabric:'Lawn • Printed',price:2500,img:'ls8.jpg',desc:'Trendy white printed kurta for daily wear.'},
 ];
 
 let cart=[],currentProduct=null,selectedSize='M',currentQty=1,currentCat='',selectedPayment='';
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2500);}
 
 function renderProducts(list,cid,limit){
   const c=document.getElementById(cid);
