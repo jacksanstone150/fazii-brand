@@ -130,7 +130,7 @@ footer{background:#1a1a1a;padding:28px 24px;margin-top:30px;}
 </head>
 <body>
 
-<div class="topbar"><p>🚚 Free Delivery All Over Pakistan &nbsp;|&nbsp; WhatsApp: 03221022052 &nbsp;|&nbsp; EasyPaisa/JazzCash: 03132436992</p></div>
+<div class="topbar"><p>🚚 Delivery All Over Pakistan &nbsp;|&nbsp; WhatsApp: 03067117890 &nbsp;|&nbsp; EasyPaisa/JazzCash: 03132436992</p></div>
 
 <nav>
   <!-- ✅ LOGO IMAGE NAV MEIN -->
@@ -493,7 +493,7 @@ function confirmOrder(){
   const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
   const msg=`🛒 New Order!\n\nNaam: ${name}\nPhone: ${phone}\nAddress: ${addr}\nItems: ${items}\nTotal: Rs.${total}\nPayment: ${selectedPayment.toUpperCase()}\nTxn ID: ${txn}`;
   window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank');
-  document.getElementById('successMsg').innerHTML=`Shukriya ${name}! 🎉<br><br>Order receive ho gaya.<br>Hum <strong>03221022052</strong> pe jald contact karenge.<br><br>📦 Delivery: 3-5 working days`;
+  document.getElementById('successMsg').innerHTML=`Shukriya ${name}! 🎉<br><br>Order receive ho gaya.<br>Hum <strong>03067117890</strong> pe jald contact karenge.<br><br>📦 Delivery: 3-5 working days`;
   document.getElementById('payStep1').style.display='none';
   document.getElementById('payStep2').style.display='block';
   cart=[];updateCartCount();
