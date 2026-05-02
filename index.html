@@ -149,13 +149,13 @@
 </head>
 <body>
 
-<!-- GOOGLE LOGIN MODAL -->
+<!-- LOGIN MODAL -->
 <div class="login-modal-overlay" id="loginModal">
   <div class="login-modal">
     <img src="logo.png" class="brand-logo" onerror="this.style.display='none'" alt="Fazii Brand">
     <h2>FAZII BRAND</h2>
     <p>Premium Fashion Store<br><span style="color:#666;font-size:11px;">Login karein ya Guest ke tor pe browse karein</span></p>
-    <button class="google-login-btn" onclick="googleLogin()">
+    <button class="google-login-btn" id="googleBtn">
       <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
       Google se Login Karein
     </button>
@@ -178,18 +178,16 @@
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
     </div>
-    <!-- Logged out -->
-    <button class="login-btn" id="loginNavBtn" onclick="document.getElementById('loginModal').classList.add('show')">
+    <button class="login-btn" id="loginNavBtn">
       <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="">
       Login
     </button>
-    <!-- Logged in -->
     <div class="user-info" id="userInfoNav" style="display:none;" onclick="toggleDropdown()">
       <img class="user-avatar" id="userAvatar" src="" alt="">
       <span class="user-name" id="userNameNav"></span>
       <div class="user-dropdown" id="userDropdown">
         <p id="userEmailNav"></p>
-        <button class="logout-btn" onclick="logoutUser()">🚪 Logout</button>
+        <button class="logout-btn" id="logoutBtn">🚪 Logout</button>
       </div>
     </div>
     <button class="cart-btn" onclick="showPage('cart')">🛒 Cart <span class="cart-count" id="cartCount">0</span></button>
@@ -336,10 +334,10 @@
   <div class="footer-bottom">© 2025 Fazii Brand — All Rights Reserved | <a href="privacy.html" style="color:#666;">Privacy</a> | <a href="terms.html" style="color:#666;">Terms</a></div>
 </footer>
 
-<!-- FIREBASE GOOGLE LOGIN -->
+<!-- FIREBASE — REDIRECT METHOD (cookies ki zarurat nahi) -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyCh4mAtHJ2D400LdvimIusWGRGv9L-isgU",
@@ -354,6 +352,16 @@
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
+  // Redirect se wapas aane ke baad result check karo
+  getRedirectResult(auth).then((result) => {
+    if (result && result.user) {
+      showToast('✅ Login ho gaya! Khush Amdeed ' + result.user.displayName.split(' ')[0]);
+    }
+  }).catch((error) => {
+    console.log('Redirect error:', error);
+  });
+
+  // Auth state — user logged in/out
   onAuthStateChanged(auth, (user) => {
     if (user) {
       document.getElementById('loginNavBtn').style.display = 'none';
@@ -362,27 +370,32 @@
       document.getElementById('userNameNav').textContent = user.displayName?.split(' ')[0] || 'User';
       document.getElementById('userEmailNav').textContent = user.email;
       document.getElementById('custName').value = user.displayName || '';
+      document.getElementById('loginModal').classList.remove('show');
     } else {
       document.getElementById('loginNavBtn').style.display = 'flex';
       document.getElementById('userInfoNav').style.display = 'none';
+      // Pehli baar login modal
+      if(!sessionStorage.getItem('visited')){
+        document.getElementById('loginModal').classList.add('show');
+        sessionStorage.setItem('visited','1');
+      }
     }
   });
 
-  window.googleLogin = async function() {
-    try {
-      await signInWithPopup(auth, provider);
-      document.getElementById('loginModal').classList.remove('show');
-      showToast('✅ Login ho gaya!');
-    } catch(e) {
-      showToast('❌ Login fail — dobara try karein');
-    }
-  };
+  // Google Login — Redirect method
+  document.getElementById('googleBtn').addEventListener('click', () => {
+    signInWithRedirect(auth, provider);
+  });
 
-  window.logoutUser = async function() {
+  document.getElementById('loginNavBtn').addEventListener('click', () => {
+    document.getElementById('loginModal').classList.add('show');
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', async () => {
     await signOut(auth);
     showToast('👋 Logout ho gaya!');
     document.getElementById('userDropdown').classList.remove('show');
-  };
+  });
 </script>
 
 <script>
@@ -438,7 +451,7 @@ const products=[
 
 let cart=[],currentProduct=null,selectedSize='M',currentQty=1,currentCat='',selectedPayment='';
 
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2500);}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',3000);}
 window.skipLogin=function(){document.getElementById('loginModal').classList.remove('show');};
 window.toggleDropdown=function(){document.getElementById('userDropdown').classList.toggle('show');};
 document.addEventListener('click',function(e){const i=document.getElementById('userInfoNav');if(i&&!i.contains(e.target))document.getElementById('userDropdown').classList.remove('show');});
@@ -564,13 +577,6 @@ function showPage(p){
 }
 
 document.getElementById('payModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
-
-// Pehli baar login modal show karo
-if(!sessionStorage.getItem('visited')){
-  document.getElementById('loginModal').classList.add('show');
-  sessionStorage.setItem('visited','1');
-}
-
 showPage('home');
 </script>
 </body>
