@@ -235,11 +235,25 @@
     .footer-links a{display:block;color:#555;text-decoration:none;font-size:11px;margin-bottom:4px;cursor:pointer;transition:color 0.2s;}
     .footer-links a:hover{color:#c9a84c;}
     .footer-bottom{border-top:1px solid #1e1e1e;padding-top:12px;text-align:center;color:#333;font-size:11px;}
-    @media(max-width:600px){.detail-grid{grid-template-columns:1fr;}.products{grid-template-columns:repeat(2,1fr);}.hero h1{font-size:22px;}.detail-img-main{height:300px;}.nav-links{display:none;}.user-name{display:none;}.search-input{width:110px;}.search-input:focus{width:140px;}.stats-bar{gap:14px;}.stat-num{font-size:15px;}.trust-bar{gap:12px;}.detail-features{grid-template-columns:1fr;}}
+    @media(max-width:600px){
+      .detail-grid{grid-template-columns:1fr;}
+      .products{grid-template-columns:repeat(2,1fr);}
+      .hero h1{font-size:22px;}
+      .detail-img-main{height:300px;}
+      .nav-links{display:none;}
+      .user-name{display:none;}
+      .search-input{width:110px;}
+      .search-input:focus{width:140px;}
+      .stats-bar{gap:14px;}
+      .stat-num{font-size:15px;}
+      .trust-bar{gap:12px;}
+      .detail-features{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 <body>
 
+<!-- PROMO POPUP -->
 <div class="promo-modal" id="promoModal">
   <div class="promo-box">
     <div style="font-size:36px;margin-bottom:8px;">🎁</div>
@@ -251,6 +265,7 @@
   </div>
 </div>
 
+<!-- SIZE CHART -->
 <div class="size-modal" id="sizeModal">
   <div class="size-modal-box">
     <h3>📏 Size Chart (inches mein)</h3>
@@ -269,6 +284,7 @@
   </div>
 </div>
 
+<!-- LOGIN MODAL -->
 <div class="login-modal-overlay" id="loginModal">
   <div class="login-modal">
     <img src="logo.png" class="brand-logo" onerror="this.style.display='none'" alt="Fazii Brand">
@@ -283,12 +299,14 @@
   </div>
 </div>
 
+<!-- TOPBAR SCROLL -->
 <div class="topbar">
   <div class="topbar-scroll">
     <p>🚚 Free Delivery All Over Pakistan &nbsp;|&nbsp; 📞 WhatsApp: 03067117856 &nbsp;|&nbsp; 💚 EasyPaisa/JazzCash: 03132436992 &nbsp;|&nbsp; 🎁 Code: FAZII10 — Pehle order pe 10% Off! &nbsp;|&nbsp; ⭐ 500+ Happy Customers</p>
   </div>
 </div>
 
+<!-- NAV -->
 <nav>
   <a class="logo" href="#">
     <img src="logo.png" alt="Fazii Brand" onerror="this.style.display='none'">
@@ -321,6 +339,7 @@
   </div>
 </nav>
 
+<!-- CAT NAV -->
 <div class="cat-nav">
   <a class="active" onclick="showPage('home')" id="cat-home">🏠 Home</a>
   <a onclick="showCategory('lady')" id="cat-lady">👗 Lady Suits</a>
@@ -332,6 +351,7 @@
   <a onclick="showPage('history')" id="cat-orders">📦 My Orders</a>
 </div>
 
+<!-- HOME -->
 <div id="homePage" class="page active">
   <div class="hero">
     <div class="hero-tag">Premium Fashion — Faisalabad</div>
@@ -372,6 +392,7 @@
   </div>
 </div>
 
+<!-- CATEGORY -->
 <div id="categoryPage" class="page">
   <div class="section">
     <div class="section-header">
@@ -387,6 +408,7 @@
   </div>
 </div>
 
+<!-- DETAIL -->
 <div id="detailPage" class="page">
   <div class="detail-page">
     <button class="back-btn" onclick="goBack()">← Wapas Jao</button>
@@ -439,6 +461,7 @@
   </div>
 </div>
 
+<!-- CART -->
 <div id="cartPage" class="page">
   <div class="cart-page">
     <button class="back-btn" onclick="showPage('home')">← Shopping Jaari Rakhein</button>
@@ -448,6 +471,7 @@
   </div>
 </div>
 
+<!-- WISHLIST -->
 <div id="wishlistPage" class="page">
   <div class="wishlist-page">
     <button class="back-btn" onclick="showPage('home')">← Wapas Home</button>
@@ -456,6 +480,7 @@
   </div>
 </div>
 
+<!-- ORDER HISTORY -->
 <div id="historyPage" class="page">
   <div class="history-page">
     <button class="back-btn" onclick="showPage('home')">← Wapas Home</button>
@@ -464,6 +489,7 @@
   </div>
 </div>
 
+<!-- CHECKOUT MODAL -->
 <div class="modal-overlay" id="payModal">
   <div class="modal">
     <div id="payStep1">
@@ -507,44 +533,61 @@
 
 <div class="toast" id="toast"></div>
 <div class="wa-pulse"></div>
-<a class="wa-float" href="https://wa.me/923067117856?text=Assalam%20o%20Alaikum!%20FAZII%20BRAND%20se%20order%20karna%20chahta%20hoon" target="_blank">💬</a>
+<a class="wa-float" href="https://wa.me/923067117856?text=Assalam%20o%20Alaikum!%20FAZII%20BRAND%20se%20order%20karna%20chahta%20hoon%20%F0%9F%9B%8D" target="_blank">💬</a>
 
 <footer>
   <div class="footer-grid">
-    <div><div class="footer-logo">FAZII BRAND</div><div class="footer-desc">Premium quality suits at best prices. Free delivery all over Pakistan.</div></div>
-    <div><div class="footer-heading">Categories</div><div class="footer-links">
-      <a onclick="showCategory('lady')">👗 Lady Suits</a>
-      <a onclick="showCategory('shalwar')">👘 Shalwar Kameez</a>
-      <a onclick="showCategory('trak')">🏃 Trak Suits</a>
-      <a onclick="showCategory('jeans')">👔 Jeans Suits</a>
-      <a onclick="showCategory('kurta')">👕 Casual Kurta</a>
-    </div></div>
-    <div><div class="footer-heading">Payment</div><div class="footer-links">
-      <a>💚 EasyPaisa: 03132436992</a>
-      <a>🔴 JazzCash: 03132436992</a>
-      <a>🏦 Bank Transfer</a>
-      <a style="color:#c9a84c;font-weight:700;">🎁 Code: FAZII10 (10% Off)</a>
-    </div></div>
-    <div><div class="footer-heading">Links</div><div class="footer-links">
-      <a href="about.html">About Us</a>
-      <a href="contact.html">Contact Us</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms & Conditions</a>
-      <a onclick="showPage('history')">📦 My Orders</a>
-    </div></div>
-    <div><div class="footer-heading">Contact</div><div class="footer-links">
-      <a href="https://wa.me/923067117856">💬 03067117856</a>
-      <a href="mailto:mainfaizan150@gmail.com">📧 mainfaizan150@gmail.com</a>
-      <a>📍 Faisalabad, Pakistan</a>
-      <a>🕐 9am – 9pm Daily</a>
-    </div></div>
+    <div>
+      <div class="footer-logo">FAZII BRAND</div>
+      <div class="footer-desc">Premium quality suits at best prices. Free delivery all over Pakistan.</div>
+    </div>
+    <div>
+      <div class="footer-heading">Categories</div>
+      <div class="footer-links">
+        <a onclick="showCategory('lady')">👗 Lady Suits</a>
+        <a onclick="showCategory('shalwar')">👘 Shalwar Kameez</a>
+        <a onclick="showCategory('trak')">🏃 Trak Suits</a>
+        <a onclick="showCategory('jeans')">👔 Jeans Suits</a>
+        <a onclick="showCategory('kurta')">👕 Casual Kurta</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Payment</div>
+      <div class="footer-links">
+        <a>💚 EasyPaisa: 03132436992</a>
+        <a>🔴 JazzCash: 03132436992</a>
+        <a>🏦 Bank Transfer</a>
+        <a style="color:#c9a84c;font-weight:700;">🎁 Code: FAZII10 (10% Off)</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Links</div>
+      <div class="footer-links">
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a onclick="showPage('history')">📦 My Orders</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Contact</div>
+      <div class="footer-links">
+        <a href="https://wa.me/923067117856">💬 03067117856</a>
+        <a href="mailto:mainfaizan150@gmail.com">📧 mainfaizan150@gmail.com</a>
+        <a>📍 Faisalabad, Pakistan</a>
+        <a>🕐 9am – 9pm Daily</a>
+      </div>
+    </div>
   </div>
   <div class="footer-bottom">© 2025 Fazii Brand — All Rights Reserved</div>
 </footer>
 
+<!-- EMAILJS -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>emailjs.init({publicKey:"suf3KdP1JPRdt5fAf"});</script>
 
+<!-- FIREBASE -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
@@ -574,60 +617,55 @@
 <script>
 const WA='923067117856';
 const products=[
-  // LADY SUITS
-  {id:1,cat:'lady',catName:'Lady Suits',name:'White Embroidered Suit',fabric:'Cotton Blend • Dupatta',price:2500,oldPrice:3200,stock:8,badge:'sale',img:'https://i.ibb.co/20sh9m6j/pexels-dhanno-33210490.jpg',desc:'Khubsoorat white suit sunehri embroidery ke saath.'},
-  {id:2,cat:'lady',catName:'Lady Suits',name:'Green Classic Suit',fabric:'Lawn Cotton • Casual',price:2800,oldPrice:null,stock:12,badge:'new',img:'https://i.ibb.co/5W323v5L/pexels-mk-1182794846-22064230.jpg',desc:'Stylish green lawn suit.'},
-  {id:3,cat:'lady',catName:'Lady Suits',name:'Peach Formal Suit',fabric:'Chiffon • With Dupatta',price:3000,oldPrice:3500,stock:5,badge:'sale',img:'https://i.ibb.co/4nQtFByr/pexels-dhanno-36090360.jpg',desc:'Khoobsoorat peach chiffon suit.'},
-  {id:4,cat:'lady',catName:'Lady Suits',name:'Peach Premium Suit',fabric:'Silk Cotton • Embroidered',price:3200,oldPrice:null,stock:7,badge:'hot',img:'https://i.ibb.co/4wTg7xFV/pexels-dhanno-36104971.jpg',desc:'Premium peach suit barik embroidery ke saath.'},
-  {id:5,cat:'lady',catName:'Lady Suits',name:'Navy Blue Print Suit',fabric:'Lawn • Block Print',price:2500,oldPrice:null,stock:15,badge:'new',img:'https://i.ibb.co/20H3Ddf0/pexels-dhanno-29413562.jpg',desc:'Trendy navy blue block print suit.'},
-  {id:6,cat:'lady',catName:'Lady Suits',name:'Pink Silk Suit',fabric:'Silk Blend • Party Wear',price:3500,oldPrice:4200,stock:4,badge:'sale',img:'https://i.ibb.co/Vc3tnvcD/pexels-dhanno-20407208.jpg',desc:'Shaadar pink silk suit.'},
-  {id:7,cat:'lady',catName:'Lady Suits',name:'Mint Green Suit',fabric:'Cotton • Gold Work',price:2800,oldPrice:null,stock:10,badge:'new',img:'https://i.ibb.co/MyGq80XB/pexels-dhanno-18977058.jpg',desc:'Taza mint green suit sone ki embroidery ke saath.'},
-  {id:8,cat:'lady',catName:'Lady Suits',name:'White Printed Suit',fabric:'Lawn Cotton • Daily',price:2500,oldPrice:null,stock:20,badge:'new',img:'https://i.ibb.co/XxR4Zh9F/pexels-dhanno-19011632.jpg',desc:'Rozana wear ke liye trendy white printed suit.'},
-  {id:9,cat:'lady',catName:'Lady Suits',name:'Green Patiala Suit',fabric:'Cotton Silk • Dupatta',price:3000,oldPrice:3600,stock:6,badge:'sale',img:'https://i.ibb.co/jkn3zHzD/pexels-dhanno-29413600.jpg',desc:'Sundar green patiala suit.'},
-  {id:10,cat:'lady',catName:'Lady Suits',name:'Maroon Patiala',fabric:'Georgette • Embroidered',price:3200,oldPrice:null,stock:8,badge:'hot',img:'https://i.ibb.co/RGh2YHBR/pexels-dhanno-36325842.jpg',desc:'Dil kash maroon suit.'},
-  {id:11,cat:'lady',catName:'Lady Suits',name:'Purple Party Suit',fabric:'Velvet • Zari Work',price:3200,oldPrice:4000,stock:3,badge:'sale',img:'https://i.ibb.co/vbzwMGk/pexels-dhanno-31323212.jpg',desc:'Shahi purple suit.'},
-  {id:12,cat:'lady',catName:'Lady Suits',name:'Purple Patiala',fabric:'Georgette • Embroidered',price:3000,oldPrice:null,stock:9,badge:'new',img:'https://i.ibb.co/FbktdN6g/pexels-dhanno-29413658.jpg',desc:'Classic purple patiala suit.'},
-  {id:13,cat:'lady',catName:'Lady Suits',name:'Red Patiala Suit',fabric:'Silk • Traditional',price:2800,oldPrice:null,stock:11,badge:'new',img:'https://i.ibb.co/NgyRP238/pexels-dhanno-29413650.jpg',desc:'Roaiti laal patiala suit.'},
-  {id:14,cat:'lady',catName:'Lady Suits',name:'Red Designer Suit',fabric:'Georgette • Heavy Work',price:3500,oldPrice:4500,stock:4,badge:'sale',img:'https://i.ibb.co/4ZNWcRrq/pexels-dhanno-29413594.jpg',desc:'Designer laal suit.'},
-  {id:15,cat:'lady',catName:'Lady Suits',name:'Red Casual Suit',fabric:'Cotton • Casual',price:2500,oldPrice:null,stock:16,badge:'new',img:'https://i.ibb.co/Hfm9tfB2/pexels-insta1-20841146.jpg',desc:'Stylish laal casual suit.'},
-  {id:16,cat:'lady',catName:'Lady Suits',name:'Purple Formal',fabric:'Georgette • Party',price:3200,oldPrice:3800,stock:5,badge:'sale',img:'https://i.ibb.co/JjTXzy3r/pexels-dhanno-20777181.jpg',desc:'Shuaan purple formal suit.'},
-  {id:17,cat:'lady',catName:'Lady Suits',name:'Red Bridal Suit',fabric:'Silk • Bridal',price:3500,oldPrice:null,stock:3,badge:'hot',img:'https://i.ibb.co/Qj7WdxSm/pexels-dhanno-29460548.jpg',desc:'Khoobsoorat laal bridal suit.'},
-  {id:18,cat:'lady',catName:'Lady Suits',name:'Magenta Mirror Suit',fabric:'Georgette • Mirror Work',price:3200,oldPrice:4000,stock:6,badge:'sale',img:'https://i.ibb.co/mFGQ4Znn/pexels-dhanno-31874441.jpg',desc:'Chamkili magenta suit.'},
-  // SHALWAR KAMEEZ
-  {id:19,cat:'shalwar',catName:'Shalwar Kameez',name:'Dark Green Kameez',fabric:'Khaddar • Classic',price:2500,oldPrice:null,stock:14,badge:'new',img:'https://i.ibb.co/gbTcnpK5/download-22.jpg',desc:'Classic dark green khaddar kameez.'},
-  {id:20,cat:'shalwar',catName:'Shalwar Kameez',name:'Beige Luxury Kameez',fabric:'Silk Blend • Formal',price:3000,oldPrice:3600,stock:7,badge:'sale',img:'https://i.ibb.co/4Q4yCNr/download-23.jpg',desc:'Luxury beige kameez.'},
-  {id:21,cat:'shalwar',catName:'Shalwar Kameez',name:'Camel Brown Suit',fabric:'Cotton Khaddar',price:2500,oldPrice:null,stock:18,badge:'new',img:'https://i.ibb.co/LWPGrzX/download-25.jpg',desc:'Classic camel brown suit.'},
-  {id:22,cat:'shalwar',catName:'Shalwar Kameez',name:'Brown Classic Suit',fabric:'Cotton • Traditional',price:2500,oldPrice:null,stock:12,badge:'new',img:'https://i.ibb.co/WpBgSnjg/download-26.jpg',desc:'Traditional brown shalwar kameez.'},
-  {id:23,cat:'shalwar',catName:'Shalwar Kameez',name:'Light Grey Suit',fabric:'Cotton Blend • Smart',price:2800,oldPrice:3200,stock:9,badge:'sale',img:'https://i.ibb.co/7dw29qXW/download-27.jpg',desc:'Smart light grey suit.'},
-  {id:24,cat:'shalwar',catName:'Shalwar Kameez',name:'Off White Formal',fabric:'Lawn • Elegant',price:2800,oldPrice:null,stock:10,badge:'new',img:'https://i.ibb.co/WNCX15QP/download-28.jpg',desc:'Elegant off white suit.'},
-  {id:25,cat:'shalwar',catName:'Shalwar Kameez',name:'Black Classic Suit',fabric:'Khaddar • Premium',price:3000,oldPrice:3500,stock:5,badge:'hot',img:'https://i.ibb.co/4nbxRgNb/download-29.jpg',desc:'Premium black khaddar suit.'},
-  {id:26,cat:'shalwar',catName:'Shalwar Kameez',name:'Olive Green Kameez',fabric:'Cotton • Casual',price:2500,oldPrice:null,stock:15,badge:'new',img:'https://i.ibb.co/PGF0Nq40/download-30.jpg',desc:'Stylish olive green kameez.'},
-  {id:27,cat:'shalwar',catName:'Shalwar Kameez',name:'Dark Teal Suit',fabric:'Khaddar • Smart Fit',price:2800,oldPrice:null,stock:8,badge:'new',img:'https://i.ibb.co/XrbppF8m/download.jpg',desc:'Dark teal shalwar kameez.'},
-  {id:28,cat:'shalwar',catName:'Shalwar Kameez',name:'Navy Blue Suit',fabric:'Cotton Blend • Classic',price:2800,oldPrice:3400,stock:11,badge:'sale',img:'https://i.ibb.co/TqhtLR9F/images-1.jpg',desc:'Classic navy blue suit.'},
-  {id:29,cat:'shalwar',catName:'Shalwar Kameez',name:'Khaki Formal',fabric:'Cotton • Formal',price:2500,oldPrice:null,stock:13,badge:'new',img:'https://i.ibb.co/23pS856x/images-2.jpg',desc:'Formal khaki suit.'},
-  {id:30,cat:'shalwar',catName:'Shalwar Kameez',name:'Black Stylish Kameez',fabric:'Georgette • Party',price:3000,oldPrice:3800,stock:6,badge:'sale',img:'https://i.ibb.co/qM90qxXF/images-4.jpg',desc:'Stylish black kameez.'},
-  {id:31,cat:'shalwar',catName:'Shalwar Kameez',name:'Maroon Classic',fabric:'Khaddar • Traditional',price:2800,oldPrice:null,stock:9,badge:'new',img:'https://i.ibb.co/rKyRzJcX/images-5.jpg',desc:'Traditional maroon shalwar kameez.'},
-  // TRAK SUITS
-  {id:32,cat:'trak',catName:'Trak Suits',name:'Beige Sports Suit',fabric:'Polyester • Casual',price:2500,oldPrice:null,stock:20,badge:'new',img:'https://i.ibb.co/sJs0wLvh/images-6.jpg',desc:'Comfortable beige sports trak suit.'},
-  {id:33,cat:'trak',catName:'Trak Suits',name:'Navy Trak Suit',fabric:'Cotton Blend • Sports',price:2800,oldPrice:3300,stock:12,badge:'sale',img:'https://i.ibb.co/M5xN0BdK/images-7.jpg',desc:'Stylish navy blue trak suit.'},
-  {id:34,cat:'trak',catName:'Trak Suits',name:'Grey Cargo Suit',fabric:'Cotton • Casual',price:2800,oldPrice:null,stock:10,badge:'hot',img:'https://i.ibb.co/gLQgxM5h/images.jpg',desc:'Trendy grey cargo trak suit.'},
-  {id:35,cat:'trak',catName:'Trak Suits',name:'Olive Sports Suit',fabric:'Polyester • Sports',price:2500,oldPrice:null,stock:15,badge:'new',img:'https://i.ibb.co/7x1Z125P/ladies-fancy-salwar-suits.jpg',desc:'Olive green sports suit.'},
-  {id:36,cat:'trak',catName:'Trak Suits',name:'Red Sweatsuit',fabric:'Fleece • Winter',price:2800,oldPrice:3400,stock:8,badge:'sale',img:'https://i.ibb.co/yndsg8G9/download-1.jpg',desc:'Warm red sweatsuit sardi ke liye.'},
-  {id:37,cat:'trak',catName:'Trak Suits',name:'Brown Formal 3-Piece',fabric:'Wool Blend • Formal',price:3500,oldPrice:4200,stock:5,badge:'sale',img:'https://i.ibb.co/kg4PkCQt/download-2.jpg',desc:'Elegant 3-piece brown formal suit.'},
-  {id:38,cat:'trak',catName:'Trak Suits',name:'Navy 3-Piece Suit',fabric:'Wool Blend • Formal',price:3500,oldPrice:null,stock:6,badge:'hot',img:'https://i.ibb.co/zW6ScSM4/download-3.jpg',desc:'Classic navy blue 3-piece suit.'},
-  {id:39,cat:'trak',catName:'Trak Suits',name:'Eid Collection',fabric:'Mixed • Family',price:2500,oldPrice:3000,stock:20,badge:'hot',img:'https://i.ibb.co/dJPpZ98v/download-4.jpg',desc:'Khaas Eid collection trak suits.'},
-  // JEANS SUITS — Bilkul alag images
-  {id:40,cat:'jeans',catName:'Jeans Suits',name:'Dark Blue Jeans Suit',fabric:'Denim • Classic',price:2800,oldPrice:null,stock:12,badge:'new',img:'https://placehold.co/400x500/1a1a2e/c9a84c?text=Dark+Blue+Jeans',desc:'Stylish dark blue denim jeans suit mardana.'},
-  {id:41,cat:'jeans',catName:'Jeans Suits',name:'Navy Jeans Suit',fabric:'Denim • Smart Casual',price:2800,oldPrice:3400,stock:9,badge:'sale',img:'https://placehold.co/400x500/0f3460/c9a84c?text=Navy+Jeans+Suit',desc:'Trendy navy denim suit.'},
-  {id:42,cat:'jeans',catName:'Jeans Suits',name:'Black Jeans Suit',fabric:'Denim • Modern',price:3000,oldPrice:null,stock:7,badge:'hot',img:'https://placehold.co/400x500/1a1a1a/c9a84c?text=Black+Jeans+Suit',desc:'Stylish black denim suit.'},
-  {id:43,cat:'jeans',catName:'Jeans Suits',name:'Grey Jeans Suit',fabric:'Denim Blend • Casual',price:2800,oldPrice:null,stock:10,badge:'new',img:'https://placehold.co/400x500/4a4a4a/c9a84c?text=Grey+Jeans+Suit',desc:'Comfortable grey jeans suit.'},
-  {id:44,cat:'jeans',catName:'Jeans Suits',name:'Light Blue Jeans',fabric:'Denim • Summer',price:2500,oldPrice:null,stock:15,badge:'new',img:'https://placehold.co/400x500/1e3a5f/ffffff?text=Light+Blue+Jeans',desc:'Light blue summer jeans suit.'},
-  // CASUAL KURTA
-  {id:45,cat:'kurta',catName:'Casual Kurta',name:'Magenta Mirror Kurta',fabric:'Georgette • Mirror Work',price:3200,oldPrice:4000,stock:5,badge:'sale',img:'https://i.ibb.co/mFGQ4Znn/pexels-dhanno-31874441.jpg',desc:'Sundar magenta kurta.'},
-  {id:46,cat:'kurta',catName:'Casual Kurta',name:'Red Casual Kurta',fabric:'Cotton • Daily Wear',price:2500,oldPrice:null,stock:18,badge:'new',img:'https://i.ibb.co/Hfm9tfB2/pexels-insta1-20841146.jpg',desc:'Stylish laal casual kurta.'},
-  {id:47,cat:'kurta',catName:'Casual Kurta',name:'White Printed Kurta',fabric:'Lawn • Printed',price:2500,oldPrice:null,stock:15,badge:'new',img:'https://i.ibb.co/XxR4Zh9F/pexels-dhanno-19011632.jpg',desc:'Trendy white printed lawn kurta.'},
+  {id:1,cat:'lady',catName:'Lady Suits',name:'White Embroidered Suit',fabric:'Cotton Blend • Dupatta',price:2500,oldPrice:3200,stock:8,badge:'sale',img:'ls1.jpg',desc:'Khubsoorat white suit sunehri embroidery ke saath. Dupatta shamil hai. Formal aur casual dono ke liye perfect.'},
+  {id:2,cat:'lady',catName:'Lady Suits',name:'Green Classic Suit',fabric:'Lawn Cotton • Casual',price:2800,oldPrice:null,stock:12,badge:'new',img:'ls2.jpg',desc:'Stylish green lawn suit har din wear ke liye. Aaram deh fabric, fresh look.'},
+  {id:3,cat:'lady',catName:'Lady Suits',name:'Peach Formal Suit',fabric:'Chiffon • With Dupatta',price:3000,oldPrice:3500,stock:5,badge:'sale',img:'ls3.jpg',desc:'Khoobsoorat peach chiffon suit dupatta ke saath. Formal functions ke liye ideal.'},
+  {id:4,cat:'lady',catName:'Lady Suits',name:'Peach Premium Suit',fabric:'Silk Cotton • Embroidered',price:3200,oldPrice:null,stock:7,badge:'hot',img:'ls4.jpg',desc:'Premium peach suit barik embroidery ke saath. Bohat umda quality.'},
+  {id:5,cat:'lady',catName:'Lady Suits',name:'Navy Blue Print Suit',fabric:'Lawn • Block Print',price:2500,oldPrice:null,stock:15,badge:'new',img:'ls5.jpg',desc:'Trendy navy blue block print suit. Modern design comfortable wear.'},
+  {id:6,cat:'lady',catName:'Lady Suits',name:'Pink Silk Suit',fabric:'Silk Blend • Party Wear',price:3500,oldPrice:4200,stock:4,badge:'sale',img:'ls6.jpg',desc:'Shaadar pink silk suit parties ke liye. Bohat gorgeous look.'},
+  {id:7,cat:'lady',catName:'Lady Suits',name:'Mint Green Suit',fabric:'Cotton • Gold Work',price:2800,oldPrice:null,stock:10,badge:'new',img:'ls7.jpg',desc:'Taza mint green suit sone ki embroidery ke saath.'},
+  {id:8,cat:'lady',catName:'Lady Suits',name:'White Printed Suit',fabric:'Lawn Cotton • Daily',price:2500,oldPrice:null,stock:20,badge:'new',img:'ls8.jpg',desc:'Rozana wear ke liye trendy white printed suit.'},
+  {id:9,cat:'lady',catName:'Lady Suits',name:'Green Patiala Suit',fabric:'Cotton Silk • Dupatta',price:3000,oldPrice:3600,stock:6,badge:'sale',img:'ls9.jpg',desc:'Sundar green patiala suit dupatta ke saath.'},
+  {id:10,cat:'lady',catName:'Lady Suits',name:'Maroon Patiala',fabric:'Georgette • Embroidered',price:3200,oldPrice:null,stock:8,badge:'hot',img:'ls10.jpg',desc:'Dil kash maroon suit khubsoorat embroidery ke saath.'},
+  {id:11,cat:'lady',catName:'Lady Suits',name:'Purple Party Suit',fabric:'Velvet • Zari Work',price:3200,oldPrice:4000,stock:3,badge:'sale',img:'ls11.jpg',desc:'Shahi purple suit zari embroidery ke saath. Parties ke liye perfect.'},
+  {id:12,cat:'lady',catName:'Lady Suits',name:'Purple Patiala',fabric:'Georgette • Embroidered',price:3000,oldPrice:null,stock:9,badge:'new',img:'ls12.jpg',desc:'Classic purple patiala suit.'},
+  {id:13,cat:'lady',catName:'Lady Suits',name:'Red Patiala Suit',fabric:'Silk • Traditional',price:2800,oldPrice:null,stock:11,badge:'new',img:'ls13.jpg',desc:'Roaiti laal patiala suit silk fabric mein.'},
+  {id:14,cat:'lady',catName:'Lady Suits',name:'Red Designer Suit',fabric:'Georgette • Heavy Work',price:3500,oldPrice:4500,stock:4,badge:'sale',img:'ls14.jpg',desc:'Designer laal suit bhaari embroidery ke saath.'},
+  {id:15,cat:'lady',catName:'Lady Suits',name:'Red Casual Suit',fabric:'Cotton • Casual',price:2500,oldPrice:null,stock:16,badge:'new',img:'ls15.jpg',desc:'Stylish laal casual suit rozana wear ke liye.'},
+  {id:16,cat:'lady',catName:'Lady Suits',name:'Purple Formal',fabric:'Georgette • Party',price:3200,oldPrice:3800,stock:5,badge:'sale',img:'ls16.jpg',desc:'Shuaan purple formal suit gatherings ke liye.'},
+  {id:17,cat:'lady',catName:'Lady Suits',name:'Red Bridal Suit',fabric:'Silk • Bridal',price:3500,oldPrice:null,stock:3,badge:'hot',img:'ls17.jpg',desc:'Khoobsoorat laal bridal suit. Nikah aur mehndi ke liye.'},
+  {id:18,cat:'lady',catName:'Lady Suits',name:'Magenta Mirror Suit',fabric:'Georgette • Mirror Work',price:3200,oldPrice:4000,stock:6,badge:'sale',img:'ls18.jpg',desc:'Chamkili magenta suit sheeshe ki embroidery ke saath.'},
+  {id:19,cat:'shalwar',catName:'Shalwar Kameez',name:'Dark Green Kameez',fabric:'Khaddar • Classic',price:2500,oldPrice:null,stock:14,badge:'new',img:'sk1.jpg',desc:'Classic dark green khaddar kameez.'},
+  {id:20,cat:'shalwar',catName:'Shalwar Kameez',name:'Beige Luxury Kameez',fabric:'Silk Blend • Formal',price:3000,oldPrice:3600,stock:7,badge:'sale',img:'sk2.jpg',desc:'Luxury beige kameez formal events ke liye.'},
+  {id:21,cat:'shalwar',catName:'Shalwar Kameez',name:'Camel Brown Suit',fabric:'Cotton Khaddar',price:2500,oldPrice:null,stock:18,badge:'new',img:'sk3.jpg',desc:'Classic camel brown khaddar suit.'},
+  {id:22,cat:'shalwar',catName:'Shalwar Kameez',name:'Brown Classic Suit',fabric:'Cotton • Traditional',price:2500,oldPrice:null,stock:12,badge:'new',img:'sk4.jpg',desc:'Traditional brown shalwar kameez.'},
+  {id:23,cat:'shalwar',catName:'Shalwar Kameez',name:'Light Grey Suit',fabric:'Cotton Blend • Smart',price:2800,oldPrice:3200,stock:9,badge:'sale',img:'sk5.jpg',desc:'Smart light grey suit office ke liye.'},
+  {id:24,cat:'shalwar',catName:'Shalwar Kameez',name:'Off White Formal',fabric:'Lawn • Elegant',price:2800,oldPrice:null,stock:10,badge:'new',img:'sk6.jpg',desc:'Elegant off white lawn suit.'},
+  {id:25,cat:'shalwar',catName:'Shalwar Kameez',name:'Black Classic Suit',fabric:'Khaddar • Premium',price:3000,oldPrice:3500,stock:5,badge:'hot',img:'sk7.jpg',desc:'Premium black khaddar suit. Har mauqe ke liye.'},
+  {id:26,cat:'shalwar',catName:'Shalwar Kameez',name:'Olive Green Kameez',fabric:'Cotton • Casual',price:2500,oldPrice:null,stock:15,badge:'new',img:'sk8.jpg',desc:'Stylish olive green kameez.'},
+  {id:27,cat:'shalwar',catName:'Shalwar Kameez',name:'Dark Teal Suit',fabric:'Khaddar • Smart Fit',price:2800,oldPrice:null,stock:8,badge:'new',img:'sk9.jpg',desc:'Dark teal smart fit shalwar kameez.'},
+  {id:28,cat:'shalwar',catName:'Shalwar Kameez',name:'Navy Blue Suit',fabric:'Cotton Blend • Classic',price:2800,oldPrice:3400,stock:11,badge:'sale',img:'sk10.jpg',desc:'Classic navy blue cotton blend suit.'},
+  {id:29,cat:'shalwar',catName:'Shalwar Kameez',name:'Khaki Formal',fabric:'Cotton • Formal',price:2500,oldPrice:null,stock:13,badge:'new',img:'sk11.jpg',desc:'Formal khaki suit office ke liye.'},
+  {id:30,cat:'shalwar',catName:'Shalwar Kameez',name:'Black Stylish Kameez',fabric:'Georgette • Party',price:3000,oldPrice:3800,stock:6,badge:'sale',img:'sk12.jpg',desc:'Stylish black kameez parties ke liye.'},
+  {id:31,cat:'shalwar',catName:'Shalwar Kameez',name:'Maroon Classic',fabric:'Khaddar • Traditional',price:2800,oldPrice:null,stock:9,badge:'new',img:'sk13.jpg',desc:'Traditional maroon khaddar shalwar kameez.'},
+  {id:32,cat:'trak',catName:'Trak Suits',name:'Beige Sports Suit',fabric:'Polyester • Casual',price:2500,oldPrice:null,stock:20,badge:'new',img:'ts1.jpg',desc:'Comfortable beige sports trak suit.'},
+  {id:33,cat:'trak',catName:'Trak Suits',name:'Navy Trak Suit',fabric:'Cotton Blend • Sports',price:2800,oldPrice:3300,stock:12,badge:'sale',img:'ts2.jpg',desc:'Stylish navy blue trak suit.'},
+  {id:34,cat:'trak',catName:'Trak Suits',name:'Grey Cargo Suit',fabric:'Cotton • Casual',price:2800,oldPrice:null,stock:10,badge:'hot',img:'ts3.jpg',desc:'Trendy grey cargo style trak suit.'},
+  {id:35,cat:'trak',catName:'Trak Suits',name:'Olive Sports Suit',fabric:'Polyester • Sports',price:2500,oldPrice:null,stock:15,badge:'new',img:'ts4.jpg',desc:'Olive green sports suit.'},
+  {id:36,cat:'trak',catName:'Trak Suits',name:'Red Sweatsuit',fabric:'Fleece • Winter',price:2800,oldPrice:3400,stock:8,badge:'sale',img:'ts5.jpg',desc:'Warm red sweatsuit sardi ke liye.'},
+  {id:37,cat:'trak',catName:'Trak Suits',name:'Brown Formal 3-Piece',fabric:'Wool Blend • Formal',price:3500,oldPrice:4200,stock:5,badge:'sale',img:'ts6.jpg',desc:'Elegant 3-piece brown formal suit.'},
+  {id:38,cat:'trak',catName:'Trak Suits',name:'Navy 3-Piece Suit',fabric:'Wool Blend • Formal',price:3500,oldPrice:null,stock:6,badge:'hot',img:'ts7.jpg',desc:'Classic navy blue 3-piece formal suit.'},
+  {id:39,cat:'trak',catName:'Trak Suits',name:'Eid Collection',fabric:'Mixed • Family',price:2500,oldPrice:3000,stock:20,badge:'hot',img:'ts8.jpg',desc:'Khaas Eid collection trak suits poori family ke liye.'},
+  {id:40,cat:'jeans',catName:'Jeans Suits',name:'Dark Green Jeans Suit',fabric:'Denim Blend • Casual',price:2800,oldPrice:null,stock:12,badge:'new',img:'sk1.jpg',desc:'Stylish dark green jeans suit.'},
+  {id:41,cat:'jeans',catName:'Jeans Suits',name:'Navy Jeans Suit',fabric:'Denim • Smart Casual',price:2800,oldPrice:3400,stock:9,badge:'sale',img:'sk5.jpg',desc:'Trendy navy denim smart casual suit.'},
+  {id:42,cat:'jeans',catName:'Jeans Suits',name:'Black Jeans Suit',fabric:'Denim • Modern',price:3000,oldPrice:null,stock:7,badge:'hot',img:'sk7.jpg',desc:'Stylish black denim suit.'},
+  {id:43,cat:'jeans',catName:'Jeans Suits',name:'Grey Jeans Suit',fabric:'Denim Blend • Casual',price:2800,oldPrice:null,stock:10,badge:'new',img:'ts3.jpg',desc:'Comfortable grey jeans suit.'},
+  {id:44,cat:'kurta',catName:'Casual Kurta',name:'Magenta Mirror Kurta',fabric:'Georgette • Mirror Work',price:3200,oldPrice:4000,stock:5,badge:'sale',img:'ls18.jpg',desc:'Sundar magenta kurta sheeshe ki embroidery ke saath.'},
+  {id:45,cat:'kurta',catName:'Casual Kurta',name:'Red Casual Kurta',fabric:'Cotton • Daily Wear',price:2500,oldPrice:null,stock:18,badge:'new',img:'ls15.jpg',desc:'Stylish laal casual kurta.'},
+  {id:46,cat:'kurta',catName:'Casual Kurta',name:'White Printed Kurta',fabric:'Lawn • Printed',price:2500,oldPrice:null,stock:15,badge:'new',img:'ls8.jpg',desc:'Trendy white printed lawn kurta.'},
 ];
 
+// STATE
 let cart=[],wishlist=[],recentlyViewed=[],orderHistory=[];
 let currentProduct=null,selectedSize='M',currentQty=1,currentCat='',selectedPayment='';
 let discount=0,currentCatProducts=[];
@@ -640,6 +678,7 @@ function saveCart(){try{localStorage.setItem('fazii_cart',JSON.stringify(cart));
 function saveWishlist(){try{localStorage.setItem('fazii_wishlist',JSON.stringify(wishlist));}catch(e){}}
 function saveOrders(){try{localStorage.setItem('fazii_orders',JSON.stringify(orderHistory));}catch(e){}}
 
+// UTILS
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';clearTimeout(t._t);t._t=setTimeout(()=>t.style.display='none',3000);}
 function placeholder(n){return `https://placehold.co/300x400/1a1a1a/c9a84c?text=${encodeURIComponent(n||'Fazii')}`;}
 window.skipLogin=()=>document.getElementById('loginModal').classList.remove('show');
@@ -652,6 +691,7 @@ document.addEventListener('click',e=>{
   if(sr&&!sr.contains(e.target)&&e.target!==si)sr.classList.remove('show');
 });
 
+// SEARCH
 function doSearch(v){
   const sr=document.getElementById('searchResults');
   if(!v.trim()){sr.classList.remove('show');return;}
@@ -663,23 +703,28 @@ function doSearch(v){
 }
 window.showSR=()=>{if(document.getElementById('searchInput').value.trim())document.getElementById('searchResults').classList.add('show');};
 
+// BADGES
 function getBadge(p){if(p.badge==='sale')return '<span class="pcard-badge badge-sale">SALE</span>';if(p.badge==='hot')return '<span class="pcard-badge badge-hot">🔥 HOT</span>';return '<span class="pcard-badge badge-new">NEW</span>';}
 function getPriceHtml(p){let h=`<span class="pcard-price">Rs. ${p.price.toLocaleString()}</span>`;if(p.oldPrice)h+=`<span class="pcard-old">Rs. ${p.oldPrice.toLocaleString()}</span>`;return h;}
-function getStockHtml(p){return p.stock<=5?`<div class="pcard-stock">⚠️ Sirf ${p.stock} bacha!</div>`:'';}
+function getStockHtml(p){return p.stock<=5?`<div class="pcard-stock">⚠️ Sirf ${p.stock} bacha!</div>`:'';} 
 
+// RENDER
 function renderProducts(list,cid,limit){
   const c=document.getElementById(cid);if(!c)return;
   const l=limit?list.slice(0,limit):list;
   if(!l.length){c.innerHTML='<p style="color:#999;padding:20px 0;">Koi product nahi</p>';return;}
-  c.innerHTML=l.map(p=>`<div class="pcard" onclick="showDetail(${p.id})"><div class="pcard-img"><img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='${placeholder(p.name)}'">${getBadge(p)}<button class="pcard-wishlist ${wishlist.includes(p.id)?'active':''}" onclick="event.stopPropagation();toggleWishlist(${p.id},this)">${wishlist.includes(p.id)?'❤️':'🤍'}</button></div><div class="pcard-body"><div class="pcard-name">${p.name}</div><div class="pcard-fabric">${p.fabric}</div><div class="pcard-price-row">${getPriceHtml(p)}</div>${getStockHtml(p)}<button class="pcard-btn">Detail Dekhein →</button></div></div>`).join('');
+  c.innerHTML=l.map(p=>`<div class="pcard" onclick="showDetail(${p.id})"><div class="pcard-img"><img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='${placeholder(p.name)}'"">${getBadge(p)}<button class="pcard-wishlist ${wishlist.includes(p.id)?'active':''}" onclick="event.stopPropagation();toggleWishlist(${p.id},this)">${wishlist.includes(p.id)?'❤️':'🤍'}</button></div><div class="pcard-body"><div class="pcard-name">${p.name}</div><div class="pcard-fabric">${p.fabric}</div><div class="pcard-price-row">${getPriceHtml(p)}</div>${getStockHtml(p)}<button class="pcard-btn">Detail Dekhein →</button></div></div>`).join('');
 }
 
+// WISHLIST
 function toggleWishlist(id,btn){const i=wishlist.indexOf(id);if(i===-1){wishlist.push(id);btn.textContent='❤️';btn.classList.add('active');showToast('❤️ Wishlist mein add!');}else{wishlist.splice(i,1);btn.textContent='🤍';btn.classList.remove('active');showToast('💔 Wishlist se hata diya');}saveWishlist();}
 function renderWishlist(){const w=products.filter(p=>wishlist.includes(p.id));if(!w.length){document.getElementById('wishlistProducts').innerHTML='<div style="text-align:center;padding:50px;color:#999;">Wishlist khali hai ❤️<br><br><button onclick="showPage(\'home\')" style="padding:10px 20px;background:#c9a84c;color:#1a1a1a;border:none;border-radius:6px;cursor:pointer;font-weight:700;">Shopping Karein</button></div>';return;}renderProducts(w,'wishlistProducts');}
 
+// RECENTLY VIEWED
 function addRecent(id){recentlyViewed=recentlyViewed.filter(x=>x!==id);recentlyViewed.unshift(id);if(recentlyViewed.length>6)recentlyViewed.length=6;}
 function renderRecent(){const rs=document.getElementById('recentlySection');const rv=products.filter(p=>recentlyViewed.includes(p.id));if(!rv.length){rs.style.display='none';return;}rs.style.display='block';renderProducts(rv,'recentlyViewed');}
 
+// DETAIL
 function showDetail(id){
   currentProduct=products.find(p=>p.id===id);if(!currentProduct)return;
   addRecent(id);
@@ -704,6 +749,7 @@ function showDetail(id){
 }
 function toggleZoom(img){img.classList.toggle('zoomed');}
 
+// CATEGORY & SORT
 function showCategory(cat){
   currentCat=cat;
   const names={lady:'Lady <span>Suits</span>',shalwar:'Shalwar <span>Kameez</span>',trak:'Trak <span>Suits</span>',jeans:'Jeans <span>Suits</span>',kurta:'Casual <span>Kurta</span>'};
@@ -724,9 +770,11 @@ function sortProducts(){
   renderProducts(s,'catProducts');
 }
 
+// SIZE & QTY
 function selSize(btn){document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');selectedSize=btn.textContent.trim();}
 function changeQty(d){currentQty=Math.max(1,currentQty+d);document.getElementById('qtyNum').textContent=currentQty;}
 
+// CART
 function addToCart(){if(!currentProduct)return;const ex=cart.find(i=>i.id===currentProduct.id&&i.size===selectedSize);if(ex)ex.qty+=currentQty;else cart.push({...currentProduct,size:selectedSize,qty:currentQty});updateCartCount();saveCart();showToast('✅ Cart mein add ho gaya!');}
 function removeFromCart(id,size){cart=cart.filter(i=>!(i.id===id&&i.size===size));updateCartCount();saveCart();renderCart();}
 function changeCartQty(id,size,d){const i=cart.find(x=>x.id===id&&x.size===size);if(i)i.qty=Math.max(1,i.qty+d);saveCart();renderCart();updateCartCount();}
@@ -739,6 +787,7 @@ function renderCart(){
   cs.innerHTML=`<div class="cart-summary"><div class="sum-row"><span>Subtotal</span><span>Rs. ${sub.toLocaleString()}</span></div><div class="sum-row"><span>Delivery</span><span style="color:#27ae60;font-weight:700;">FREE ✓</span></div><div class="sum-total"><span>Total</span><span style="color:#c9a84c;">Rs. ${sub.toLocaleString()}</span></div><button class="checkout-btn" onclick="openPayModal()">💳 Order Complete Karein</button></div>`;
 }
 
+// COUPON
 const COUPONS={FAZII10:10,FAZII20:20,EID15:15};
 function applyCoupon(){
   const code=document.getElementById('couponInput').value.trim().toUpperCase();
@@ -774,9 +823,9 @@ function selPayment(m){
   const d=document.getElementById('payDetail');d.classList.add('show');
   const sub=cart.reduce((s,i)=>s+i.price*i.qty,0);
   const total=Math.round(sub-(sub*discount/100));
-  if(m==='easypaisa')d.innerHTML=`<p>EasyPaisa pe send karein:</p><div class="acc-num">03132436992 <button class="copy-btn" onclick="copyText('03132436992')">Copy</button></div><p>Amount: <strong>Rs. ${total.toLocaleString()}</strong></p><p style="color:#e74c3c;font-size:11px;">⚠️ TXN ID zaroor note karo!</p>`;
-  else if(m==='jazzcash')d.innerHTML=`<p>JazzCash pe send karein:</p><div class="acc-num">03132436992 <button class="copy-btn" onclick="copyText('03132436992')">Copy</button></div><p>Amount: <strong>Rs. ${total.toLocaleString()}</strong></p><p style="color:#e74c3c;font-size:11px;">⚠️ TXN ID zaroor note karo!</p>`;
-  else d.innerHTML=`<p><strong>Bank:</strong> Meezan Bank</p><p><strong>Account:</strong> Fazii Brand</p><p style="color:#e74c3c;font-size:11px;">⚠️ TXN ID zaroor note karo!</p>`;
+  if(m==='easypaisa')d.innerHTML=`<p>EasyPaisa pe send karein:</p><div class="acc-num">03132436992 <button class="copy-btn" onclick="copyText('03132436992')">Copy</button></div><p>Amount: <strong>Rs. ${total.toLocaleString()}</strong></p><p style="color:#e74c3c;font-size:11px;">⚠️ Transaction ID zaroor note karo!</p>`;
+  else if(m==='jazzcash')d.innerHTML=`<p>JazzCash pe send karein:</p><div class="acc-num">03132436992 <button class="copy-btn" onclick="copyText('03132436992')">Copy</button></div><p>Amount: <strong>Rs. ${total.toLocaleString()}</strong></p><p style="color:#e74c3c;font-size:11px;">⚠️ Transaction ID zaroor note karo!</p>`;
+  else d.innerHTML=`<p><strong>Bank:</strong> Meezan Bank</p><p><strong>Account:</strong> Fazii Brand</p><p style="color:#e74c3c;font-size:11px;">⚠️ Transaction ID zaroor note karo!</p>`;
 }
 function confirmOrder(){
   const name=document.getElementById('custName').value.trim();
@@ -812,15 +861,18 @@ function confirmOrder(){
 }
 function closeModal(){document.getElementById('payModal').classList.remove('show');}
 
+// ORDER HISTORY
 function renderOrderHistory(){
   const hl=document.getElementById('historyList');
   if(!orderHistory.length){hl.innerHTML='<div style="text-align:center;padding:50px;color:#999;">Abhi koi order nahi 📦<br><br><button onclick="showPage(\'home\')" style="padding:10px 20px;background:#c9a84c;color:#1a1a1a;border:none;border-radius:6px;cursor:pointer;font-weight:700;">Shopping Karein</button></div>';return;}
   hl.innerHTML=orderHistory.map(o=>`<div class="history-card"><div class="hc-top"><div><div class="hc-orderno">📦 ${o.orderNo}</div><div class="hc-date">${o.date}</div></div><span class="hc-status ${o.status==='confirmed'?'status-confirmed':'status-pending'}">${o.status==='confirmed'?'✅ Confirmed':'⏳ Pending'}</span></div><div class="hc-items">${o.items.map(i=>`${i.name} (${i.size}) x${i.qty}`).join(', ')}</div><div style="display:flex;justify-content:space-between;align-items:center;"><div class="hc-total">Rs. ${o.total.toLocaleString()}</div><div style="font-size:11px;color:#aaa;">${o.payment} • ${o.city}</div></div></div>`).join('');
 }
 
+// WA ORDER
 function waOrder(){if(!currentProduct)return;const m=`Assalam o Alaikum! Mujhe *${currentProduct.name}* chahiye\nSize: ${selectedSize}, Qty: ${currentQty}\nPrice: Rs.${currentProduct.price.toLocaleString()}`;window.open(`https://wa.me/${WA}?text=${encodeURIComponent(m)}`,'_blank');}
 function goBack(){if(currentCat)showCategory(currentCat);else showPage('home');}
 
+// SHOW PAGE
 function showPage(p){
   document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
   document.querySelectorAll('.cat-nav a').forEach(a=>a.classList.remove('active'));
