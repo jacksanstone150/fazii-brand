@@ -866,7 +866,7 @@ function confirmOrder(){
   }).then(()=>showToast('📧 Email bhi pohonch gayi!')).catch(err=>console.error('EmailJS:',err));
   const wm=`🛒 *New Order — ${orderNo}*\n\n👤 ${name}\n📞 ${phone}\n🏙️ ${city}\n📍 ${addr}\n\n🛍️ *Items:*\n${cart.map(i=>`• ${i.name} (${i.size}) x${i.qty} = Rs.${(i.price*i.qty).toLocaleString()}`).join('\n')}\n\n💰 Total: *Rs.${total.toLocaleString()}*${disc>0?'\n🎁 Discount: Rs.'+disc.toLocaleString():''}\n💳 ${selectedPayment.toUpperCase()}\n🔖 TXN: ${txn}${note?'\n📝 Note: '+note:''}`;
   window.open(`https://wa.me/${WA}?text=${encodeURIComponent(wm)}`,'_blank');
-  document.getElementById('successMsg').innerHTML=`Shukriya <strong>${name}</strong>! 🎉<br><br>📦 Order No: <strong>${orderNo}</strong><br>📧 Email pe details pohonch gayi!<br>💬 WhatsApp pe bhi message gaya!<br><br>Hum <strong>03067117856</strong> pe jald contact karenge.<br>📦 Delivery: 3-5 working days`;
+  document.getElementById('successMsg').innerHTML=`Shukriya <strong>${name}</strong>! 🎉<br><br>📦 Order No: <strong>${orderNo}</strong><br>📧 Email pe details pohonch gayi!<br>💬 WhatsApp pe bhi message gaya!<br><br>Hum <strong>03067117890</strong> pe jald contact karenge.<br>📦 Delivery: 3-5 working days`;
   document.getElementById('payStep1').style.display='none';
   document.getElementById('payStep2').style.display='block';
   cart=[];updateCartCount();saveCart();
